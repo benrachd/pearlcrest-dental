@@ -118,7 +118,7 @@ export function HeroBackground({ imageAlt, dissolveStyle }: HeroBackgroundProps)
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[52%_30%] blur-[2px] brightness-[0.85] saturate-[0.9]"
+            className="object-cover object-[58%_22%] blur-[2px] brightness-[0.85] saturate-[0.9] sm:object-[52%_30%]"
           />
         </motion.div>
       </motion.div>
@@ -149,7 +149,7 @@ export function HeroBackground({ imageAlt, dissolveStyle }: HeroBackgroundProps)
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[55%_28%] contrast-[1.06] saturate-[1.02]"
+            className="object-cover object-[58%_22%] contrast-[1.06] saturate-[1.02] sm:object-[55%_28%]"
           />
         </motion.div>
       </motion.div>
@@ -159,7 +159,7 @@ export function HeroBackground({ imageAlt, dissolveStyle }: HeroBackgroundProps)
         className="pointer-events-none absolute inset-0 transform-gpu"
         style={reduceMotion ? undefined : { x: fgX, y: fgY }}
       >
-        <div className="absolute inset-x-0 bottom-0 h-[45%] bg-gradient-to-t from-neutral-950/50 via-transparent to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-[52%] bg-gradient-to-t from-neutral-950/60 via-transparent to-transparent sm:h-[45%] sm:from-neutral-950/50" />
         <div className="absolute bottom-[12%] start-[8%] size-32 rounded-full bg-gold-200/8 blur-3xl" />
         <div className="absolute bottom-[20%] end-[12%] size-40 rounded-full bg-neutral-50/6 blur-3xl" />
       </motion.div>

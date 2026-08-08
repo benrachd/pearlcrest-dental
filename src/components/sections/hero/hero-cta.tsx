@@ -18,14 +18,14 @@ export function HeroCta({ children }: HeroCtaProps) {
   const springY = useSpring(y, springs.magnetic);
 
   if (reduceMotion) {
-    return <div className="inline-block">{children}</div>;
+    return <div className="block w-full sm:inline-block sm:w-auto">{children}</div>;
   }
 
   return (
     <motion.div
       ref={ref}
       style={{ x: springX, y: springY }}
-      className="group/cta inline-block"
+      className="group/cta block w-full sm:inline-block sm:w-auto"
       whileHover={{ y: -2 }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       onMouseMove={(event) => {

@@ -20,18 +20,18 @@ export function ScrollIndicator({ label, dissolveStyle }: ScrollIndicatorProps) 
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       transition={{ duration: duration.slower, delay: 2.6, ease: easing.luxury }}
       style={dissolveStyle?.style}
-      className="group absolute inset-x-0 bottom-10 z-10 mx-auto flex w-fit flex-col items-center gap-5"
+      className="group absolute inset-x-0 bottom-3 z-10 mx-auto flex w-fit flex-col items-center gap-3 sm:bottom-10 sm:gap-5"
       aria-label={label}
     >
       <motion.span
-        className="text-caption text-neutral-50/45 group-hover:text-neutral-50/75 rtl:tracking-normal uppercase tracking-[0.34em] transition-colors duration-700"
+        className="text-caption text-neutral-50/40 group-hover:text-neutral-50/70 rtl:tracking-normal uppercase tracking-[0.28em] transition-colors duration-700 sm:text-neutral-50/45 sm:tracking-[0.34em]"
         animate={reduceMotion ? undefined : { opacity: [0.45, 0.75, 0.45] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       >
         {label}
       </motion.span>
 
-      <span className="relative flex h-16 w-px items-start justify-center overflow-hidden">
+      <span className="relative flex h-12 w-px items-start justify-center overflow-hidden sm:h-16">
         <span aria-hidden="true" className="bg-neutral-50/15 absolute inset-0 w-px" />
         <motion.span
           aria-hidden="true"

@@ -49,23 +49,23 @@ export function Navbar() {
           boxShadow,
           scale: navScale,
         }}
-        className="pointer-events-auto mx-auto flex h-10 w-full max-w-[1600px] transform-gpu items-center justify-between rounded-full border border-gold-500/25 pe-1 ps-5 will-change-transform"
+        className="pointer-events-auto mx-auto flex h-10 w-full max-w-[1600px] transform-gpu items-center justify-between rounded-full border border-gold-500/25 pe-1 ps-4 will-change-transform sm:ps-5"
       >
         <Link
           href={ROUTES.HOME}
           aria-label={t("homeAriaLabel")}
           data-cursor="interactive"
-          className="group ease-luxury relative flex items-baseline gap-2 py-1 transition-opacity duration-700 hover:opacity-80"
+          className="group ease-luxury relative flex min-w-0 shrink items-baseline gap-1.5 py-1 transition-opacity duration-700 hover:opacity-80 sm:gap-2"
         >
           <motion.span
             style={{ color: logoPrimary, textShadow: logoShadow }}
-            className="font-heading text-lg font-medium tracking-[0.2em]"
+            className="font-heading text-[0.9375rem] font-medium tracking-[0.16em] sm:text-lg sm:tracking-[0.2em]"
           >
             AUREA
           </motion.span>
           <motion.span
             style={{ color: logoSecondary, textShadow: logoShadow }}
-            className="text-caption tracking-[0.26em]"
+            className="text-caption tracking-[0.18em] sm:tracking-[0.26em]"
           >
             DENTAL
           </motion.span>
@@ -81,8 +81,8 @@ export function Navbar() {
             href={ROUTES.CONSULTATION}
             data-cursor="interactive"
             className={cn(
-              "group relative inline-flex h-8 items-center justify-center overflow-hidden rounded-full px-4",
-              "text-body-sm font-body font-medium text-neutral-950",
+              "group relative inline-flex h-8 shrink-0 items-center justify-center overflow-hidden rounded-full px-3.5",
+              "text-body-sm font-body font-medium text-neutral-950 sm:px-4",
               "bg-gradient-to-r from-gold-300 via-gold-500 to-gold-600",
               "shadow-[0_2px_16px_rgba(198,169,98,0.32),inset_0_1px_0_rgba(255,255,255,0.35)]",
               "transition-[box-shadow,transform,filter] duration-700 ease-luxury",
