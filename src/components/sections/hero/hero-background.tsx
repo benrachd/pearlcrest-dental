@@ -149,10 +149,34 @@ export function HeroBackground({ imageAlt, dissolveStyle }: HeroBackgroundProps)
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[74%_36%] contrast-[1.05] saturate-[1.04] brightness-[1.02] md:object-[55%_28%] md:contrast-[1.06] md:saturate-[1.02] md:brightness-100"
+            className="object-cover object-[74%_36%] contrast-[1.055] saturate-[1.045] brightness-[1.035] md:object-[55%_28%] md:contrast-[1.06] md:saturate-[1.02] md:brightness-100"
           />
         </motion.div>
       </motion.div>
+
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 md:hidden">
+        <div
+          className="absolute inset-0 opacity-[0.52] mix-blend-soft-light blur-[1.5px]"
+          style={{
+            background:
+              "radial-gradient(ellipse 12% 7.5% at 81% 37%, rgba(255,251,246,0.92) 0%, rgba(255,246,235,0.38) 38%, transparent 72%)",
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-[0.34] mix-blend-screen"
+          style={{
+            background:
+              "radial-gradient(ellipse 6.5% 3.8% at 79% 36%, rgba(255,254,252,0.75) 0%, rgba(255,250,245,0.25) 42%, transparent 70%)",
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-[0.24] mix-blend-overlay blur-[2px]"
+          style={{
+            background:
+              "radial-gradient(ellipse 10% 6% at 80.5% 37.5%, rgba(255,252,249,0.55) 0%, transparent 68%)",
+          }}
+        />
+      </div>
 
       <motion.div
         aria-hidden="true"
