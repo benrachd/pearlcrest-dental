@@ -3,35 +3,50 @@
 import { motion, type MotionStyle } from "framer-motion";
 import { duration, easing } from "@/animations/transitions";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
+import { cn } from "@/utils/cn";
 
 export interface ScrollIndicatorProps {
   label: string;
   dissolveStyle?: { style?: { opacity?: MotionStyle["opacity"] } };
+  placement?: "inline" | "fixed";
+  className?: string;
 }
 
-export function ScrollIndicator({ label, dissolveStyle }: ScrollIndicatorProps) {
+export function ScrollIndicator({
+  label,
+  dissolveStyle,
+  placement = "fixed",
+  className,
+}: ScrollIndicatorProps) {
   const reduceMotion = useReducedMotion();
+  const isInline = placement === "inline";
 
   return (
     <motion.button
       type="button"
       onClick={() => window.scrollBy({ top: window.innerHeight, behavior: "smooth" })}
-      initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
-      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      initial={isInline ? false : { opacity: 0, y: 20, filter: "blur(6px)" }}
+      animate={isInline ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
       transition={{ duration: duration.slower, delay: 2.6, ease: easing.luxury }}
       style={dissolveStyle?.style}
-      className="group absolute inset-x-0 bottom-3 z-10 mx-auto flex w-fit flex-col items-center gap-3 sm:bottom-10 sm:gap-5"
+      className={cn(
+        "group z-10 mx-auto flex w-fit max-w-full flex-col items-center gap-2.5",
+        isInline
+          ? "pointer-events-auto relative mt-4 shrink-0 self-center md:mt-6"
+          : "absolute inset-x-0 bottom-10 gap-5",
+        className,
+      )}
       aria-label={label}
     >
       <motion.span
-        className="text-caption text-neutral-50/40 group-hover:text-neutral-50/70 rtl:tracking-normal uppercase tracking-[0.28em] transition-colors duration-700 sm:text-neutral-50/45 sm:tracking-[0.34em]"
+        className="text-caption text-neutral-50/40 group-hover:text-neutral-50/70 rtl:tracking-normal uppercase tracking-[0.28em] transition-colors duration-700 md:text-neutral-50/45 md:tracking-[0.34em]"
         animate={reduceMotion ? undefined : { opacity: [0.45, 0.75, 0.45] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       >
         {label}
       </motion.span>
 
-      <span className="relative flex h-12 w-px items-start justify-center overflow-hidden sm:h-16">
+      <span className="relative flex h-10 w-px items-start justify-center overflow-hidden md:h-16">
         <span aria-hidden="true" className="bg-neutral-50/15 absolute inset-0 w-px" />
         <motion.span
           aria-hidden="true"
@@ -47,7 +62,7 @@ export function ScrollIndicator({ label, dissolveStyle }: ScrollIndicatorProps) 
         <motion.span
           aria-hidden="true"
           className="bg-neutral-50/95 absolute top-0 size-1 rounded-full shadow-[0_0_10px_rgba(255,255,255,0.45),0_0_20px_rgba(198,169,98,0.25)]"
-          animate={reduceMotion ? undefined : { y: [0, 52, 0], opacity: [1, 0.25, 1] }}
+          animate={reduceMotion ? undefined : { y: [0, isInline ? 36 : 52, 0], opacity: [1, 0.25, 1] }}
           transition={{ duration: 3.2, repeat: Infinity, ease: easing.signature }}
         />
       </span>
