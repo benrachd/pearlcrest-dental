@@ -102,7 +102,7 @@ export function HeroBackground({ imageAlt, dissolveStyle }: HeroBackgroundProps)
       style={dissolveStyle}
     >
       <motion.div
-        className="absolute inset-x-0 -inset-y-[12%] scale-[1.04] transform-gpu will-change-transform md:scale-110"
+        className="absolute inset-x-0 -inset-y-[6%] scale-[0.96] transform-gpu will-change-transform md:-inset-y-[12%] md:scale-110"
         style={reduceMotion ? undefined : { x: bgX, y: bgY }}
       >
         <motion.div
@@ -118,13 +118,13 @@ export function HeroBackground({ imageAlt, dissolveStyle }: HeroBackgroundProps)
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[74%_36%] blur-[2px] brightness-[0.88] saturate-[0.92] md:object-[52%_30%] md:brightness-[0.85] md:saturate-[0.9]"
+            className="object-cover object-[65%_44%] blur-[2px] brightness-[0.88] saturate-[0.92] md:object-[52%_30%] md:brightness-[0.85] md:saturate-[0.9]"
           />
         </motion.div>
       </motion.div>
 
       <motion.div
-        className="absolute inset-x-0 -inset-y-[5%] transform-gpu will-change-transform md:-inset-y-[8%]"
+        className="absolute inset-x-0 -inset-y-[12%] scale-[0.96] transform-gpu will-change-transform md:-inset-y-[8%] md:scale-100"
         style={
           reduceMotion
             ? undefined
@@ -149,31 +149,31 @@ export function HeroBackground({ imageAlt, dissolveStyle }: HeroBackgroundProps)
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[74%_36%] contrast-[1.055] saturate-[1.045] brightness-[1.035] md:object-[55%_28%] md:contrast-[1.06] md:saturate-[1.02] md:brightness-100"
+            className="object-cover object-[65%_44%] contrast-[1.055] saturate-[1.045] brightness-[1.035] md:object-[55%_28%] md:contrast-[1.06] md:saturate-[1.02] md:brightness-100"
           />
         </motion.div>
       </motion.div>
 
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 md:hidden">
         <div
-          className="absolute inset-0 opacity-[0.52] mix-blend-soft-light blur-[1.5px]"
+          className="absolute inset-0 opacity-[0.48] mix-blend-soft-light blur-[1.5px]"
           style={{
             background:
-              "radial-gradient(ellipse 12% 7.5% at 81% 37%, rgba(255,251,246,0.92) 0%, rgba(255,246,235,0.38) 38%, transparent 72%)",
+              "radial-gradient(ellipse 11% 6.5% at 73% 41%, rgba(255,251,246,0.9) 0%, rgba(255,246,235,0.35) 38%, transparent 72%)",
           }}
         />
         <div
-          className="absolute inset-0 opacity-[0.34] mix-blend-screen"
+          className="absolute inset-0 opacity-[0.3] mix-blend-screen"
           style={{
             background:
-              "radial-gradient(ellipse 6.5% 3.8% at 79% 36%, rgba(255,254,252,0.75) 0%, rgba(255,250,245,0.25) 42%, transparent 70%)",
+              "radial-gradient(ellipse 6% 3.5% at 71% 40%, rgba(255,254,252,0.7) 0%, rgba(255,250,245,0.22) 42%, transparent 70%)",
           }}
         />
         <div
-          className="absolute inset-0 opacity-[0.24] mix-blend-overlay blur-[2px]"
+          className="absolute inset-0 opacity-[0.2] mix-blend-overlay blur-[2px]"
           style={{
             background:
-              "radial-gradient(ellipse 10% 6% at 80.5% 37.5%, rgba(255,252,249,0.55) 0%, transparent 68%)",
+              "radial-gradient(ellipse 9% 5.5% at 72.5% 41%, rgba(255,252,249,0.5) 0%, transparent 68%)",
           }}
         />
       </div>
@@ -184,7 +184,8 @@ export function HeroBackground({ imageAlt, dissolveStyle }: HeroBackgroundProps)
         style={reduceMotion ? undefined : { x: fgX, y: fgY }}
       >
         <div className="absolute inset-x-0 bottom-0 h-[52%] bg-gradient-to-t from-neutral-950/60 via-transparent to-transparent md:h-[45%] md:from-neutral-950/50" />
-        <div className="absolute inset-y-0 start-0 w-[58%] bg-gradient-to-r from-neutral-950/55 via-neutral-950/20 to-transparent md:hidden" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-neutral-950/45 via-transparent via-45% to-transparent md:hidden" />
+        <div className="absolute inset-y-0 start-0 w-[45%] bg-gradient-to-r from-neutral-950/62 via-neutral-950/24 to-transparent md:hidden" />
         <div className="absolute bottom-[12%] start-[8%] size-32 rounded-full bg-gold-200/8 blur-3xl" />
         <div className="absolute bottom-[20%] end-[12%] size-40 rounded-full bg-neutral-50/6 blur-3xl" />
       </motion.div>
@@ -228,7 +229,7 @@ export function HeroBackground({ imageAlt, dissolveStyle }: HeroBackgroundProps)
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 max-md:bg-[radial-gradient(ellipse_90%_85%_at_22%_48%,rgba(8,6,5,0.42),transparent_58%)]"
+        className="pointer-events-none absolute inset-0 max-md:bg-[radial-gradient(ellipse_95%_88%_at_18%_50%,rgba(8,6,5,0.5),transparent_52%)]"
       />
       <div
         aria-hidden="true"
