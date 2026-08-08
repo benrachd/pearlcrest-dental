@@ -1,0 +1,468 @@
+@import "tailwindcss";
+
+/*
+ * ============================================================================
+ * AUREA DENTAL — DESIGN SYSTEM
+ * ============================================================================
+ * Tailwind v4 CSS-first theme. This file is the single source of truth for
+ * every design token in the product: color, typography, spacing, radius,
+ * shadow, blur/glass, motion, and breakpoints.
+ *
+ * Structure:
+ *   1. Dark-mode variant strategy
+ *   2. Primitive tokens (`@theme`)      — raw palette + scales, never used
+ *                                          directly in product code
+ *   3. Semantic tokens (`:root`/`.dark`) — meaning-based aliases that change
+ *                                          between light and dark mode
+ *   4. Semantic tokens registration (`@theme inline`) — exposes the above as
+ *                                          real Tailwind utilities
+ *   5. Base layer                        — global element defaults
+ *   6. Custom utilities (`@utility`)     — glass/surface effects
+ * ============================================================================
+ */
+
+/* -------------------------------------------------------------------------
+ * 1. Dark mode
+ * ---------------------------------------------------------------------- */
+/* Opt-in, class-based dark mode: adding `.dark` anywhere up the tree flips
+   every semantic color token below. No theme switcher UI ships in this
+   foundation, but the entire system is dark-mode-ready. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* -------------------------------------------------------------------------
+ * 2. Primitive tokens
+ * ---------------------------------------------------------------------- */
+@theme {
+  /* --- Typefaces --------------------------------------------------------
+   * Populated with CSS variables produced by `src/styles/fonts.ts`
+   * (next/font). Latin family first, Arabic family second: the browser
+   * renders each character in whichever family actually has a glyph for
+   * it, so EN/AR/FR content mixes correctly with zero locale branching. */
+  --font-heading: var(--font-heading-latin), var(--font-heading-arabic), ui-serif, serif;
+  --font-body: var(--font-body-latin), var(--font-body-arabic), ui-sans-serif, sans-serif;
+
+  /* --- Color: neutral -----------------------------------------------------
+   * A warm, low-chroma "porcelain-to-ink" scale — Apple/Linear-style
+   * restraint with a warm undertone appropriate for a private clinic
+   * rather than a cold, clinical gray. This is the workhorse scale for
+   * backgrounds, borders, and text; almost everything is built from it. */
+  --color-neutral-50: oklch(98.5% 0.004 90);
+  --color-neutral-100: oklch(96.5% 0.006 88);
+  --color-neutral-200: oklch(92.5% 0.008 87);
+  --color-neutral-300: oklch(85.5% 0.012 85);
+  --color-neutral-400: oklch(74% 0.016 83);
+  --color-neutral-500: oklch(62% 0.018 80);
+  --color-neutral-600: oklch(50% 0.017 78);
+  --color-neutral-700: oklch(39% 0.015 75);
+  --color-neutral-800: oklch(28% 0.012 70);
+  --color-neutral-900: oklch(19% 0.009 65);
+  --color-neutral-950: oklch(12% 0.006 60);
+
+  /* --- Color: gold (signature accent) -------------------------------------
+   * "Aurea" — Latin for golden. Used sparingly and deliberately: primary
+   * actions, focus rings, active/selected states, subtle glows. Never used
+   * as a body-text or large-surface color. */
+  --color-gold-50: oklch(97.8% 0.02 95);
+  --color-gold-100: oklch(94.5% 0.045 93);
+  --color-gold-200: oklch(89% 0.08 90);
+  --color-gold-300: oklch(82% 0.11 87);
+  --color-gold-400: oklch(74% 0.13 82);
+  --color-gold-500: oklch(66% 0.135 75);
+  --color-gold-600: oklch(57% 0.125 68);
+  --color-gold-700: oklch(48% 0.105 62);
+  --color-gold-800: oklch(39% 0.085 58);
+  --color-gold-900: oklch(30% 0.065 55);
+  --color-gold-950: oklch(20% 0.045 50);
+
+  /* --- Color: semantic status ---------------------------------------------
+   * Muted, editorial tones rather than saturated "SaaS" alert colors, each
+   * with a subtle (background), base (icon/border), and emphasis
+   * (text-on-subtle) step. */
+  --color-success-subtle: oklch(95% 0.02 145);
+  --color-success: oklch(52% 0.09 145);
+  --color-success-emphasis: oklch(38% 0.08 145);
+
+  --color-warning-subtle: oklch(96% 0.025 60);
+  --color-warning: oklch(58% 0.11 55);
+  --color-warning-emphasis: oklch(42% 0.09 55);
+
+  --color-error-subtle: oklch(95% 0.025 25);
+  --color-error: oklch(50% 0.11 25);
+  --color-error-emphasis: oklch(38% 0.1 22);
+
+  --color-info-subtle: oklch(95% 0.015 250);
+  --color-info: oklch(52% 0.06 250);
+  --color-info-emphasis: oklch(38% 0.06 250);
+
+  /* --- Typography scale ---------------------------------------------------
+   * Tailwind's default `text-xs` … `text-2xl` remain available for
+   * ordinary UI copy. This adds an editorial "display" scale (large,
+   * tightly tracked headlines) and a "heading" scale (section titles) on
+   * top — the vocabulary a luxury, content-led site actually needs. */
+  --text-display-2xl: 4.5rem;
+  --text-display-2xl--line-height: 1.05;
+  --text-display-2xl--letter-spacing: -0.02em;
+  --text-display-2xl--font-weight: 600;
+
+  --text-display-xl: 3.75rem;
+  --text-display-xl--line-height: 1.08;
+  --text-display-xl--letter-spacing: -0.02em;
+  --text-display-xl--font-weight: 600;
+
+  --text-display-lg: 3rem;
+  --text-display-lg--line-height: 1.1;
+  --text-display-lg--letter-spacing: -0.015em;
+  --text-display-lg--font-weight: 600;
+
+  --text-display-md: 2.25rem;
+  --text-display-md--line-height: 1.15;
+  --text-display-md--letter-spacing: -0.015em;
+  --text-display-md--font-weight: 600;
+
+  --text-display-sm: 1.875rem;
+  --text-display-sm--line-height: 1.2;
+  --text-display-sm--letter-spacing: -0.01em;
+  --text-display-sm--font-weight: 600;
+
+  --text-heading-xl: 1.5rem;
+  --text-heading-xl--line-height: 1.3;
+  --text-heading-xl--letter-spacing: -0.01em;
+  --text-heading-xl--font-weight: 600;
+
+  --text-heading-lg: 1.25rem;
+  --text-heading-lg--line-height: 1.35;
+  --text-heading-lg--letter-spacing: -0.005em;
+  --text-heading-lg--font-weight: 600;
+
+  --text-heading-md: 1.125rem;
+  --text-heading-md--line-height: 1.4;
+  --text-heading-md--font-weight: 600;
+
+  --text-heading-sm: 1rem;
+  --text-heading-sm--line-height: 1.4;
+  --text-heading-sm--font-weight: 600;
+
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.6;
+
+  --text-body-md: 1rem;
+  --text-body-md--line-height: 1.6;
+
+  --text-body-sm: 0.875rem;
+  --text-body-sm--line-height: 1.55;
+
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.5;
+  --text-caption--letter-spacing: 0.01em;
+  --text-caption--font-weight: 500;
+
+  /* --- Spacing --------------------------------------------------------
+   * The base `--spacing` multiplier (Tailwind's numeric p-1, gap-4, …
+   * scale) is intentionally left untouched. These are additional named
+   * tokens for the layout rhythm every page will share, e.g.
+   * `px-gutter`, `py-section-y`. */
+  --spacing-gutter: 1.5rem;
+  --spacing-gutter-lg: 4rem;
+  --spacing-section-y: 7rem;
+  --spacing-section-y-lg: 11rem;
+
+  /* --- Border radius --------------------------------------------------
+   * Overrides Tailwind's defaults with a more generous, softer scale —
+   * part of the Apple-esque feel — plus a `4xl` for hero-level surfaces. */
+  --radius-xs: 0.375rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-3xl: 2.5rem;
+  --radius-4xl: 3rem;
+  --radius-card: 1.75rem;
+
+  /* --- Shadows ----------------------------------------------------------
+   * Soft, diffused, low-opacity elevation (Stripe/Linear-style) tinted
+   * warm to match the neutral palette instead of pure black, plus a
+   * signature gold glow for primary CTAs and focus states. */
+  --shadow-xs: 0 1px 2px 0 oklch(20% 0.01 70 / 0.04);
+  --shadow-sm: 0 1px 3px 0 oklch(20% 0.01 70 / 0.06), 0 1px 2px -1px oklch(20% 0.01 70 / 0.05);
+  --shadow-md: 0 4px 10px -2px oklch(20% 0.01 70 / 0.08), 0 2px 4px -2px oklch(20% 0.01 70 / 0.05);
+  --shadow-lg: 0 12px 24px -6px oklch(20% 0.01 70 / 0.1), 0 4px 8px -4px oklch(20% 0.01 70 / 0.06);
+  --shadow-xl:
+    0 24px 48px -12px oklch(20% 0.01 70 / 0.14), 0 8px 16px -8px oklch(20% 0.01 70 / 0.08);
+  --shadow-2xl: 0 32px 64px -16px oklch(20% 0.01 70 / 0.18);
+  --shadow-inner-sm: inset 0 1px 2px 0 oklch(20% 0.01 70 / 0.06);
+  --shadow-gold: 0 8px 30px -6px oklch(66% 0.135 75 / 0.35);
+
+  /* --- Motion: easing -----------------------------------------------------
+   * `--ease-*` is a real Tailwind theme namespace, so these become usable
+   * as `ease-luxury` / `ease-signature` utilities directly. Numeric
+   * duration values are intentionally kept out of the theme (Tailwind's
+   * `duration-*` utilities are unscaled numbers already); see
+   * `src/animations/transitions.ts` for the canonical duration scale
+   * shared with Framer Motion, and the `:root` custom properties below
+   * for using those same durations in plain CSS. */
+  --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-signature: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* --- Breakpoints --------------------------------------------------------
+   * Tailwind's sm/md/lg/xl/2xl are kept as-is; `xs` covers small phones,
+   * `3xl` targets the ultra-wide desktop layouts a flagship site is
+   * viewed on. */
+  --breakpoint-xs: 30rem;
+  --breakpoint-3xl: 120rem;
+}
+
+/* -------------------------------------------------------------------------
+ * 3. Semantic tokens — light mode (default)
+ * ---------------------------------------------------------------------- */
+:root {
+  --background: var(--color-neutral-50);
+  --surface: oklch(100% 0 0);
+  --surface-elevated: oklch(100% 0 0);
+  --foreground: var(--color-neutral-900);
+  --foreground-muted: var(--color-neutral-600);
+  --foreground-subtle: var(--color-neutral-400);
+  --border: var(--color-neutral-200);
+  --border-strong: var(--color-neutral-300);
+
+  --accent: var(--color-gold-500);
+  --accent-foreground: var(--color-neutral-950);
+  --accent-hover: var(--color-gold-600);
+
+  --primary: var(--color-neutral-900);
+  --primary-foreground: var(--color-neutral-50);
+  --primary-hover: var(--color-neutral-800);
+
+  --ring: var(--color-gold-400);
+
+  /* Tint used by the `.glass` utilities below (see section 6). */
+  --glass-tint: var(--color-neutral-50);
+  --glass-border: var(--color-neutral-50);
+
+  /* Motion durations as CSS custom properties (kept in sync with
+     `src/animations/transitions.ts`) for use with plain CSS transitions,
+     e.g. `transition-duration: var(--motion-duration-base)`. */
+  --motion-duration-fast: 350ms;
+  --motion-duration-base: 700ms;
+  --motion-duration-slow: 900ms;
+  --motion-duration-slower: 1100ms;
+}
+
+/* -------------------------------------------------------------------------
+ * Semantic tokens — dark mode
+ * ---------------------------------------------------------------------- */
+.dark {
+  --background: var(--color-neutral-950);
+  --surface: var(--color-neutral-900);
+  --surface-elevated: var(--color-neutral-800);
+  --foreground: var(--color-neutral-50);
+  --foreground-muted: var(--color-neutral-400);
+  --foreground-subtle: var(--color-neutral-600);
+  --border: var(--color-neutral-800);
+  --border-strong: var(--color-neutral-700);
+
+  --accent: var(--color-gold-400);
+  --accent-foreground: var(--color-neutral-950);
+  --accent-hover: var(--color-gold-300);
+
+  --primary: var(--color-neutral-50);
+  --primary-foreground: var(--color-neutral-950);
+  --primary-hover: var(--color-neutral-200);
+
+  --ring: var(--color-gold-400);
+
+  --glass-tint: var(--color-neutral-950);
+  --glass-border: var(--color-neutral-50);
+}
+
+/* -------------------------------------------------------------------------
+ * 4. Register semantic tokens as real Tailwind utilities
+ * ---------------------------------------------------------------------- */
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-foreground-subtle: var(--foreground-subtle);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-hover: var(--accent-hover);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+
+  --color-ring: var(--ring);
+}
+
+/* -------------------------------------------------------------------------
+ * 5. Base layer
+ * ---------------------------------------------------------------------- */
+@layer base {
+  html {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    font-feature-settings: "kern" 1, "liga" 1;
+    letter-spacing: 0.01em;
+    line-height: 1.65;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+  }
+
+  ::selection {
+    background-color: var(--color-gold-200);
+    color: var(--color-neutral-950);
+  }
+
+  /* A single, consistent focus treatment everywhere (buttons, inputs,
+     links, chips) instead of the browser default outline — visible,
+     accessible, and on-brand. */
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+  }
+}
+
+/* Respect the OS-level "reduce motion" preference at the CSS level too,
+   as a baseline safety net independent of `MotionProvider`. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* -------------------------------------------------------------------------
+ * 6. Custom utilities — glass / frosted-surface effects
+ * ---------------------------------------------------------------------- */
+/* Usage: `<header class="glass">`, `<div class="dark:glass-dark">`. Built
+   as real Tailwind utilities (`@utility`, not `@layer components`) so they
+   compose with variants: `hover:glass-strong`, `lg:glass`, etc. */
+@utility glass {
+  background-color: color-mix(in oklab, var(--glass-tint) 72%, transparent);
+  backdrop-filter: blur(var(--blur-lg)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--blur-lg)) saturate(180%);
+  border: 1px solid color-mix(in oklab, var(--glass-border) 12%, transparent);
+}
+
+@utility glass-strong {
+  background-color: color-mix(in oklab, var(--glass-tint) 88%, transparent);
+  backdrop-filter: blur(var(--blur-2xl)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--blur-2xl)) saturate(180%);
+  border: 1px solid color-mix(in oklab, var(--glass-border) 14%, transparent);
+}
+
+@utility glass-subtle {
+  background-color: color-mix(in oklab, var(--glass-tint) 55%, transparent);
+  backdrop-filter: blur(var(--blur-md)) saturate(160%);
+  -webkit-backdrop-filter: blur(var(--blur-md)) saturate(160%);
+  border: 1px solid color-mix(in oklab, var(--glass-border) 10%, transparent);
+}
+
+@utility image-hover-zoom {
+  transition-property: opacity, transform;
+  transition-duration: var(--motion-duration-slower);
+  transition-timing-function: var(--ease-luxury);
+}
+
+/* -------------------------------------------------------------------------
+ * 7. Cinematic motion utilities
+ * ---------------------------------------------------------------------- */
+@keyframes gold-sweep {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateX(120%);
+    opacity: 0.6;
+  }
+  65% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+}
+
+@keyframes glass-reflection-sweep {
+  0% {
+    transform: translateX(-130%) skewX(-12deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.35;
+  }
+  50% {
+    transform: translateX(130%) skewX(-12deg);
+    opacity: 0.35;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(130%) skewX(-12deg);
+    opacity: 0;
+  }
+}
+
+.gold-sweep {
+  animation: gold-sweep 9s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.glass-reflection-sweep {
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.14) 50%,
+    transparent 62%
+  );
+  animation: glass-reflection-sweep 12s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
