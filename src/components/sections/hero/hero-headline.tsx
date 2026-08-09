@@ -18,7 +18,7 @@ export function HeroHeadline() {
   const subheadlineDelay = emphasisStart + emphasisWords * WORD_STAGGER + 0.35;
 
   return (
-    <div className="flex w-full min-w-0 max-w-full flex-col gap-5 md:max-w-3xl md:gap-8 lg:gap-10">
+    <div className="flex w-full min-w-0 max-w-full flex-col gap-5 max-md:max-w-[17.75rem] md:max-w-3xl md:gap-8 lg:gap-10">
       <motion.p
         variants={labelReveal}
         initial="hidden"
@@ -48,7 +48,7 @@ export function HeroHeadline() {
         initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         transition={{ duration: 1.2, ease: easing.luxury, delay: subheadlineDelay }}
-        className="text-body-md text-neutral-200/75 max-w-[32ch] leading-[1.65] tracking-[0.015em] md:text-body-lg md:max-w-[34ch] md:leading-[1.75] lg:text-body-xl lg:max-w-[38ch]"
+        className="text-body-md text-neutral-200/75 max-w-[26ch] leading-[1.65] tracking-[0.015em] max-md:translate-y-0.5 md:max-w-[34ch] md:text-body-lg md:leading-[1.75] lg:text-body-xl lg:max-w-[38ch]"
       >
         {t("subheadline")}
       </motion.p>

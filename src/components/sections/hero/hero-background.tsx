@@ -108,15 +108,17 @@ export function HeroBackground({ imageAlt, dissolveStyle }: HeroBackgroundProps)
           className="absolute inset-0"
           style={reduceMotion ? undefined : { y: scrollParallaxY }}
         >
-          <Image
-            src={HERO_IMAGE_MOBILE}
-            alt=""
-            aria-hidden
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-[50%_38%] blur-[2px] brightness-[0.92] saturate-[0.95]"
-          />
+          <div className="absolute inset-0 origin-[68%_36%] scale-[1.12]">
+            <Image
+              src={HERO_IMAGE_MOBILE}
+              alt=""
+              aria-hidden
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-[52%_36%] blur-[2px] brightness-[0.92] saturate-[0.95]"
+            />
+          </div>
         </motion.div>
 
         <motion.div
@@ -130,14 +132,16 @@ export function HeroBackground({ imageAlt, dissolveStyle }: HeroBackgroundProps)
                 }
           }
         >
-          <Image
-            src={HERO_IMAGE_MOBILE}
-            alt={imageAlt}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-[50%_38%] contrast-[1.04] saturate-[1.03] brightness-[1.02]"
-          />
+          <div className="absolute inset-0 origin-[68%_36%] scale-[1.12]">
+            <Image
+              src={HERO_IMAGE_MOBILE}
+              alt={imageAlt}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-[52%_36%] contrast-[1.04] saturate-[1.03] brightness-[1.02]"
+            />
+          </div>
         </motion.div>
       </div>
 
@@ -199,14 +203,14 @@ export function HeroBackground({ imageAlt, dissolveStyle }: HeroBackgroundProps)
           className="absolute inset-0 opacity-[0.32] mix-blend-soft-light blur-[1.5px]"
           style={{
             background:
-              "radial-gradient(ellipse 9% 5.5% at 68% 34%, rgba(255,251,246,0.82) 0%, rgba(255,246,235,0.28) 38%, transparent 72%)",
+              "radial-gradient(ellipse 9% 5.5% at 70% 33%, rgba(255,251,246,0.82) 0%, rgba(255,246,235,0.28) 38%, transparent 72%)",
           }}
         />
         <div
           className="absolute inset-0 opacity-[0.2] mix-blend-screen"
           style={{
             background:
-              "radial-gradient(ellipse 5% 3% at 66% 33%, rgba(255,254,252,0.62) 0%, rgba(255,250,245,0.16) 42%, transparent 70%)",
+              "radial-gradient(ellipse 5% 3% at 68% 32%, rgba(255,254,252,0.62) 0%, rgba(255,250,245,0.16) 42%, transparent 70%)",
           }}
         />
       </div>
@@ -216,8 +220,7 @@ export function HeroBackground({ imageAlt, dissolveStyle }: HeroBackgroundProps)
         className="pointer-events-none absolute inset-0 transform-gpu"
         style={reduceMotion ? undefined : { x: fgX, y: fgY }}
       >
-        <div className="absolute inset-x-0 bottom-0 h-[52%] bg-gradient-to-t from-neutral-950/60 via-transparent to-transparent md:h-[45%] md:from-neutral-950/50" />
-        <div className="absolute inset-x-0 bottom-0 h-[38%] bg-gradient-to-t from-neutral-950/35 via-transparent to-transparent md:hidden" />
+        <div className="absolute inset-x-0 bottom-0 h-[52%] bg-gradient-to-t from-neutral-950/60 via-transparent to-transparent md:h-[45%] md:from-neutral-950/50 max-md:h-[36%] max-md:from-neutral-950/26 max-md:via-neutral-950/8 max-md:via-42%" />
         <div className="absolute bottom-[12%] start-[8%] size-32 rounded-full bg-gold-200/8 blur-3xl" />
         <div className="absolute bottom-[20%] end-[12%] size-40 rounded-full bg-neutral-50/6 blur-3xl" />
       </motion.div>
@@ -261,7 +264,7 @@ export function HeroBackground({ imageAlt, dissolveStyle }: HeroBackgroundProps)
       />
       <div
         aria-hidden="true"
-        className="from-neutral-950/95 via-neutral-950/45 pointer-events-none absolute inset-0 bg-gradient-to-t from-15% via-50% to-transparent max-md:from-neutral-950/55 max-md:via-neutral-950/20"
+        className="from-neutral-950/95 via-neutral-950/45 pointer-events-none absolute inset-0 bg-gradient-to-t from-15% via-50% to-transparent max-md:from-20% max-md:from-neutral-950/34 max-md:via-neutral-950/10 max-md:via-55%"
       />
 
       {!reduceMotion && (
