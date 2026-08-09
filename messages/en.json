@@ -23,7 +23,7 @@
     "imageAlt": "Editorial portrait in warm window light — Aurea Dental",
     "badgeRating": "5.0",
     "badgeLabel": "Trusted by International Patients",
-    "badgeCities": "Dubai · Riyadh · Doha",
+    "badgeCities": "Dubai · Abu Dhabi · Riyadh · Doha",
     "trust1": "50,000+ smiles refined",
     "trust2": "Digital Smile Design",
     "trust3": "Same-Day Implants",
@@ -38,10 +38,10 @@
     "eyebrow": "The Standard",
     "title": "Proof, not <em>promises</em>.",
     "intro": "Eighteen years across four capitals. Every number earned in quiet rooms with unhurried hands.",
-    "yearsLabel": "Years of clinical mastery",
-    "treatmentsLabel": "Smiles perfected",
-    "digitalLabel": "Digitally planned treatments",
-    "destinationsLabel": "International locations"
+    "yearsLabel": "Years of Clinical Mastery",
+    "treatmentsLabel": "Smiles Refined",
+    "digitalLabel": "Digitally Planned",
+    "destinationsLabel": "International Destinations"
   },
   "Services": {
     "eyebrow": "The Work",
@@ -161,7 +161,7 @@
     "s2ImageAlt": "Dr. James Whitfield in ivory jacket, warm clinic interior",
     "s3Name": "Dr. Amira Al-Rashid",
     "s3Role": "Cosmetic & Restorative",
-    "s3Bio": "Specialist in porcelain veneers and full-mouth rehabilitation. One standard — Dubai, London, Beverly Hills.",
+    "s3Bio": "Specialist in porcelain veneers and full-mouth rehabilitation. One standard across Dubai, Abu Dhabi, Riyadh, and Doha.",
     "s3ImageAlt": "Dr. Amira Al-Rashid in silk and soft window light"
   },
   "Faq": {
@@ -179,7 +179,7 @@
     "q5Question": "Do you offer financing or payment plans?",
     "q5Answer": "Discreet, flexible arrangements for qualifying patients. Discussed privately during your consultation.",
     "q6Question": "Where are Aurea clinics located?",
-    "q6Answer": "Dubai, Riyadh, Beverly Hills, and Paris — one standard of care, four destinations."
+    "q6Answer": "Dubai, Abu Dhabi, Riyadh, and Doha — one standard of care, four destinations."
   },
   "ContactCta": {
     "eyebrow": "Begin",
@@ -194,9 +194,9 @@
     "brandStatement": "Where precision meets poise. Private dental care for those who expect nothing less.",
     "locationsHeading": "Locations",
     "location_dubai": "Dubai",
+    "location_abuDhabi": "Abu Dhabi",
     "location_riyadh": "Riyadh",
-    "location_beverlyHills": "Beverly Hills",
-    "location_paris": "Paris",
+    "location_doha": "Doha",
     "navHeading": "Explore",
     "linkHome": "Home",
     "linkTreatments": "Treatments",

@@ -1,22 +1,40 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { RichTitleEmphasis } from "@/components/common/rich-title-emphasis";
-import { StatCounter } from "@/components/common/stat-counter";
 import { cinematicStagger, sectionReveal } from "@/animations/variants";
 import { viewportContent } from "@/animations/viewport";
 import { sectionShell } from "@/constants/surface-classes";
 
 const STATS = [
   { key: "years", value: 18, suffix: "+" },
-  { key: "treatments", value: 50000, suffix: "+" },
+  { key: "treatments", value: 2500, suffix: "+" },
   { key: "digital", value: 100, suffix: "%" },
   { key: "destinations", value: 4, suffix: "" },
 ] as const;
 
+function formatStatValue(
+  stat: (typeof STATS)[number],
+  locale: string,
+): string {
+  if (stat.key === "digital") {
+    return `${stat.value}${stat.suffix}`;
+  }
+
+  if (stat.key === "destinations") {
+    return String(stat.value);
+  }
+
+  const formatted =
+    stat.value >= 1000 ? stat.value.toLocaleString(locale) : String(stat.value);
+
+  return `${formatted}${stat.suffix}`;
+}
+
 export function Trust() {
   const t = useTranslations("Trust");
+  const locale = useLocale();
 
   return (
     <section aria-labelledby="trust-heading" className="bg-neutral-950 relative overflow-hidden">
@@ -65,8 +83,8 @@ export function Trust() {
               custom={index * 0.08}
               className="border-gold-500/15 flex flex-col gap-3 border-t pt-8 sm:gap-4 sm:pt-10"
             >
-              <p className="font-heading text-display-sm sm:text-display-md tracking-[-0.02em]">
-                <StatCounter value={stat.value} suffix={stat.suffix} />
+              <p className="font-heading text-display-sm sm:text-display-md tracking-[-0.02em] text-gold-300/95 tabular-nums">
+                {formatStatValue(stat, locale)}
               </p>
               <p className="text-body-sm text-neutral-400 leading-[1.65] tracking-[0.02em] sm:text-body-md">
                 {t(`${stat.key}Label`)}

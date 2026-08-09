@@ -14,7 +14,7 @@ import { viewportHeader } from "@/animations/viewport";
 import { ROUTES } from "@/constants/routes";
 import { Link } from "@/i18n/navigation";
 
-const LOCATIONS = ["dubai", "riyadh", "beverlyHills", "paris"] as const;
+const LOCATIONS = ["dubai", "abuDhabi", "riyadh", "doha"] as const;
 
 const FOOTER_NAV = [
   { labelKey: "linkHome", href: ROUTES.HOME },

@@ -23,7 +23,7 @@
     "imageAlt": "Une femme au sourire naturel et lumineux, dans une douce lumière chaleureuse, au sein d'une clinique Aurea Dental",
     "badgeRating": "5,0",
     "badgeLabel": "La confiance de patients internationaux",
-    "badgeCities": "Dubaï • Riyad • Londres",
+    "badgeCities": "Dubaï · Abou Dabi · Riyad · Doha",
     "trust1": "50 000+ sourires transformés",
     "trust2": "Digital Smile Design",
     "trust3": "Implants en un jour",
@@ -39,8 +39,8 @@
     "title": "Des preuves, pas des <em>promesses</em>.",
     "intro": "Dix-huit ans dans quatre capitales. Chaque chiffre gagné dans le silence de salles où rien n'est pressé.",
     "yearsLabel": "Années de maîtrise clinique",
-    "treatmentsLabel": "Sourires perfectionnés",
-    "digitalLabel": "Traitements planifiés numériquement",
+    "treatmentsLabel": "Sourires affinés",
+    "digitalLabel": "Planifié numériquement",
     "destinationsLabel": "Destinations internationales"
   },
   "Services": {
@@ -161,7 +161,7 @@
     "s2ImageAlt": "Dr James Whitfield en veste ivoire ajustée, debout dans un intérieur de clinique chaleureux",
     "s3Name": "Dr Amira Al-Rashid",
     "s3Role": "Esthétique et restauration",
-    "s3Bio": "Spécialiste en facettes en porcelaine et réhabilitation complète. Formée à Dubaï, Londres et Beverly Hills — une seule exigence, partout.",
+    "s3Bio": "Spécialiste en facettes en porcelaine et réhabilitation complète. Un même standard à Dubaï, Abou Dabi, Riyad et Doha.",
     "s3ImageAlt": "Dr Amira Al-Rashid en blouse de soie crème, debout dans une douce lumière dorée"
   },
   "Faq": {
@@ -179,7 +179,7 @@
     "q5Question": "Proposez-vous un financement ou des plans de paiement ?",
     "q5Answer": "Oui. Nous proposons des arrangements discrets et flexibles pour les patients éligibles. Votre concierge en discutera en privé lors de votre consultation.",
     "q6Question": "Où se trouvent les cliniques Aurea ?",
-    "q6Answer": "Dubaï, Riyad, Beverly Hills et Paris — une seule exigence de soins, quatre destinations. Votre concierge recommandera le lieu optimal pour votre traitement."
+    "q6Answer": "Dubaï, Abou Dabi, Riyad et Doha — une seule exigence de soins, quatre destinations. Votre concierge recommandera le lieu optimal pour votre traitement."
   },
   "ContactCta": {
     "eyebrow": "Commencer",
@@ -194,9 +194,9 @@
     "brandStatement": "Là où la précision rencontre l'élégance. Soins dentaires privés pour ceux qui n'acceptent rien de moins que l'exceptionnel.",
     "locationsHeading": "Cliniques",
     "location_dubai": "Dubaï",
+    "location_abuDhabi": "Abou Dabi",
     "location_riyadh": "Riyad",
-    "location_beverlyHills": "Beverly Hills",
-    "location_paris": "Paris",
+    "location_doha": "Doha",
     "navHeading": "Explorer",
     "linkHome": "Accueil",
     "linkTreatments": "Traitements",
