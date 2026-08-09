@@ -29,35 +29,35 @@ export function HeroHeadline() {
         {t("eyebrow")}
       </motion.p>
 
-      <div className="flex w-full min-w-0 flex-col gap-5 max-md:max-w-[16.5rem] max-md:rtl:max-w-[min(16.5rem,calc(100vw-3rem))] md:rtl:max-w-[min(38rem,calc(100vw-4rem))] md:gap-8 lg:gap-10 lg:rtl:max-w-[min(40rem,calc(100vw-5rem))]">
-      <h1
-        aria-label={t("headlineAria")}
-        className="font-body w-full min-w-0 max-w-[calc(100vw-3rem)] md:max-w-none ltr:-ms-[0.02em] font-light leading-[1.04] tracking-[-0.035em] text-neutral-50 text-[clamp(1.9375rem,5.2vw+0.88rem,2.5rem)] max-md:text-white rtl:leading-[1.18] rtl:tracking-normal md:rtl:max-w-full md:rtl:text-[clamp(2.25rem,3.6vw,3.75rem)] md:text-display-xl lg:text-[clamp(3.5rem,7.2vw,6.25rem)] md:leading-[0.98] md:tracking-[-0.04em] lg:rtl:text-[clamp(2.5rem,3.8vw,4rem)]"
-      >
-        <span className="inline-flex max-w-full flex-wrap items-baseline justify-start gap-x-[0.12em] gap-y-1 max-md:rtl:justify-start md:rtl:justify-end md:gap-x-[0.18em] md:gap-y-2">
-          <WordReveal
-            text={t("headlineLead")}
-            startDelay={HEADLINE_START}
-            stagger={WORD_STAGGER}
-            wordClassName="max-md:drop-shadow-[0_2px_16px_rgba(0,0,0,0.42)]"
-          />
-          <WordReveal
-            text={t("headlineEmphasis")}
-            startDelay={emphasisStart}
-            stagger={WORD_STAGGER}
-            wordClassName="font-heading text-gold-200/95 rtl:not-italic relative -top-[0.02em] md:-top-[0.03em] font-medium italic tracking-[-0.025em] max-md:text-gold-100 max-md:drop-shadow-[0_2px_14px_rgba(0,0,0,0.38)]"
-          />
-        </span>
-      </h1>
+      <div className="flex w-full min-w-0 flex-col gap-5 max-md:max-w-[16.5rem] max-md:rtl:max-w-[calc(100vw-3rem)] md:rtl:max-w-[min(38rem,calc(100vw-4rem))] md:gap-8 lg:gap-10 lg:rtl:max-w-[min(40rem,calc(100vw-5rem))]">
+        <h1
+          aria-label={t("headlineAria")}
+          className="font-body w-full min-w-0 max-w-[calc(100vw-3rem)] md:max-w-none ltr:-ms-[0.02em] font-light leading-[1.04] tracking-[-0.035em] text-neutral-50 text-[clamp(1.9375rem,5.2vw+0.88rem,2.5rem)] max-md:text-white rtl:leading-[1.18] rtl:tracking-normal md:rtl:max-w-full md:rtl:text-[clamp(2.25rem,3.6vw,3.75rem)] md:text-display-xl lg:text-[clamp(3.5rem,7.2vw,6.25rem)] md:leading-[0.98] md:tracking-[-0.04em] lg:rtl:text-[clamp(2.5rem,3.8vw,4rem)]"
+        >
+          <span className="inline-flex max-w-full flex-wrap items-baseline justify-start gap-x-[0.12em] gap-y-1 max-md:rtl:justify-start md:rtl:justify-end md:gap-x-[0.18em] md:gap-y-2">
+            <WordReveal
+              text={t("headlineLead")}
+              startDelay={HEADLINE_START}
+              stagger={WORD_STAGGER}
+              wordClassName="max-md:drop-shadow-[0_2px_16px_rgba(0,0,0,0.42)]"
+            />
+            <WordReveal
+              text={t("headlineEmphasis")}
+              startDelay={emphasisStart}
+              stagger={WORD_STAGGER}
+              wordClassName="font-heading text-gold-200/95 rtl:not-italic relative -top-[0.02em] md:-top-[0.03em] font-medium italic tracking-[-0.025em] max-md:text-gold-100 max-md:drop-shadow-[0_2px_14px_rgba(0,0,0,0.38)]"
+            />
+          </span>
+        </h1>
 
-      <motion.p
-        initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ duration: 1.2, ease: easing.luxury, delay: subheadlineDelay }}
-        className="text-body-md text-neutral-200/75 max-w-[23ch] leading-[1.65] tracking-[0.015em] max-md:translate-y-0.5 max-md:font-normal max-md:text-neutral-50/95 max-md:leading-[1.62] max-md:drop-shadow-[0_1px_12px_rgba(0,0,0,0.32)] max-md:rtl:max-w-[min(23ch,calc(100vw-3rem))] max-md:rtl:text-start rtl:leading-[1.72] rtl:tracking-normal md:rtl:max-w-[34ch] md:rtl:text-end md:max-w-[34ch] md:text-body-lg md:leading-[1.75] lg:text-body-xl lg:max-w-[38ch] lg:rtl:max-w-[38ch]"
-      >
-        {t("subheadline")}
-      </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 1.2, ease: easing.luxury, delay: subheadlineDelay }}
+          className="text-body-md text-neutral-200/75 max-w-[23ch] leading-[1.65] tracking-[0.015em] max-md:translate-y-0.5 max-md:font-normal max-md:text-neutral-50/95 max-md:leading-[1.62] max-md:drop-shadow-[0_1px_12px_rgba(0,0,0,0.32)] max-md:rtl:max-w-[calc(100vw-3rem)] max-md:rtl:text-start rtl:leading-[1.72] rtl:tracking-normal md:rtl:max-w-[34ch] md:rtl:text-end md:max-w-[34ch] md:text-body-lg md:leading-[1.75] lg:text-body-xl lg:max-w-[38ch] lg:rtl:max-w-[38ch]"
+        >
+          {t("subheadline")}
+        </motion.p>
       </div>
     </div>
   );
