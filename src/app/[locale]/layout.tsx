@@ -6,7 +6,6 @@ import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { AmbientAtmosphere } from "@/components/common/ambient-atmosphere";
 import { AmbientParticles } from "@/components/common/ambient-particles";
-import { CustomCursor } from "@/components/common/custom-cursor";
 import { BookingModalProvider } from "@/components/booking";
 import { HashScrollHandler } from "@/components/common/hash-scroll-handler";
 import { LoadingScreen } from "@/components/common/loading-screen";
@@ -81,7 +80,6 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
               <BookingModalProvider>
                 <HashScrollHandler />
                 <LoadingScreen />
-                <CustomCursor />
                 <AmbientAtmosphere />
                 <AmbientParticles />
                 <Navbar />
