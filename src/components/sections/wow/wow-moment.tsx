@@ -61,17 +61,17 @@ export function WowMoment() {
 
       <motion.div
         style={reduceMotion ? undefined : { y: textY, opacity: textOpacity }}
-        className="px-gutter lg:px-gutter-lg relative z-10 mx-auto max-w-[1200px] text-center sm:px-10"
+        className="px-gutter lg:px-gutter-lg relative z-10 mx-auto w-full min-w-0 max-w-[1200px] text-center sm:px-10"
       >
         <motion.h2
           initial={reduceMotion ? false : { opacity: 0, y: 40, filter: "blur(10px)" }}
           whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 1.3, ease: easing.luxury }}
-          className="font-body text-display-xl xs:text-display-2xl sm:text-[clamp(3rem,6.5vw,5.5rem)] text-balance tracking-[-0.035em] text-neutral-50 leading-[1.04]"
+          className="font-body mx-auto w-full min-w-0 max-w-full text-balance tracking-[-0.035em] text-neutral-50 leading-[1.04] max-sm:max-w-[calc(100vw-3rem)] max-sm:text-[clamp(1.875rem,7.5vw+0.75rem,2.625rem)] sm:text-[clamp(3rem,6.5vw,5.5rem)]"
         >
-          <span className="block">{t("line1")}</span>
-          <span className="text-gold-200/90 mt-2 block font-light italic">{t("line2")}</span>
+          <span className="block max-w-full">{t("line1")}</span>
+          <span className="text-gold-200/90 mt-2 block max-w-full font-light italic">{t("line2")}</span>
         </motion.h2>
         <motion.div
           initial={reduceMotion ? false : { scaleX: 0, opacity: 0 }}
