@@ -199,6 +199,32 @@
     "openMaps": "Open in Google Maps",
     "openMapsAria": "Open clinic location in Google Maps"
   },
+  "BookingModal": {
+    "eyebrow": "Consultation",
+    "title": "Book a consultation",
+    "subtitle": "A first conversation, in complete confidence.",
+    "fullNameLabel": "Full name",
+    "emailLabel": "Email address",
+    "phoneLabel": "Phone / WhatsApp",
+    "serviceLabel": "Desired service",
+    "servicePlaceholder": "Select a service",
+    "messageLabel": "Message",
+    "submitCta": "Send my request",
+    "submitError": "Something went wrong. Please try again.",
+    "closeAria": "Close booking form",
+    "closeCta": "Close",
+    "successTitle": "Thank you for your request.",
+    "successSubtitle": "Our team will contact you shortly.",
+    "whatsappCta": "Continue on WhatsApp",
+    "whatsappPrefillIntro": "Hello, I would like to book a consultation.",
+    "services": {
+      "smileAesthetics": "Smile aesthetics",
+      "veneers": "Dental veneers",
+      "implants": "Implantology",
+      "whitening": "Teeth whitening",
+      "general": "General consultation"
+    }
+  },
   "ContactCta": {
     "eyebrow": "Begin",
     "title": "Start with a <em>conversation</em>.",

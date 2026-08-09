@@ -9,7 +9,9 @@ export {
   getMailtoHref,
   getTelHref,
   getWhatsAppHref,
+  getWhatsAppHrefWithText,
   isBookingUrlConfigured,
+  isInquiryEndpointConfigured,
 } from "@/constants/contact-config";
 
 /**

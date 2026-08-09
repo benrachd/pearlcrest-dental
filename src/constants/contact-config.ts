@@ -9,6 +9,8 @@ export const contactConfig = {
   /** E.164-style digits only, e.g. "971501234567" — enables wa.me links when set. */
   whatsappNumber: null as string | null,
   bookingUrl: "[Booking URL]",
+  /** Optional inquiry API (Formspree, custom backend). Leave empty for demo confirmation. */
+  inquiryEndpoint: "" as string,
 } as const;
 
 export type ContactConfig = typeof contactConfig;
@@ -29,6 +31,18 @@ export function isBookingUrlConfigured(): boolean {
 
 export function getBookingHref(): string | null {
   return isBookingUrlConfigured() ? contactConfig.bookingUrl : null;
+}
+
+export function isInquiryEndpointConfigured(): boolean {
+  return isConfiguredUrl(contactConfig.inquiryEndpoint);
+}
+
+export function getWhatsAppHrefWithText(text?: string): string | null {
+  const base = getWhatsAppHref();
+  if (!base) return null;
+  if (!text?.trim()) return base;
+  const separator = base.includes("?") ? "&" : "?";
+  return `${base}${separator}text=${encodeURIComponent(text)}`;
 }
 
 export function getTelHref(): string | null {

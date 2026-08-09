@@ -199,6 +199,32 @@
     "openMaps": "فتح في Google Maps",
     "openMapsAria": "فتح موقع العيادة في Google Maps"
   },
+  "BookingModal": {
+    "eyebrow": "استشارة",
+    "title": "حجز استشارة",
+    "subtitle": "محادثة أولى، بكل سرية.",
+    "fullNameLabel": "الاسم الكامل",
+    "emailLabel": "البريد الإلكتروني",
+    "phoneLabel": "الهاتف / واتساب",
+    "serviceLabel": "الخدمة المطلوبة",
+    "servicePlaceholder": "اختر خدمة",
+    "messageLabel": "رسالة",
+    "submitCta": "إرسال طلبي",
+    "submitError": "حدث خطأ. يرجى المحاولة مرة أخرى.",
+    "closeAria": "إغلاق نموذج الحجز",
+    "closeCta": "إغلاق",
+    "successTitle": "شكراً لطلبك.",
+    "successSubtitle": "سيتواصل معك فريقنا قريباً.",
+    "whatsappCta": "المتابعة عبر واتساب",
+    "whatsappPrefillIntro": "مرحباً، أود حجز استشارة.",
+    "services": {
+      "smileAesthetics": "جماليات الابتسامة",
+      "veneers": "قشور الأسنان",
+      "implants": "زراعة الأسنان",
+      "whitening": "تبييض الأسنان",
+      "general": "استشارة عامة"
+    }
+  },
   "ContactCta": {
     "eyebrow": "ابدأ",
     "title": "ابدأ <em>بمحادثة</em>.",

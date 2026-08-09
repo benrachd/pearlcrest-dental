@@ -1,39 +1,43 @@
 "use client";
 
-import type { AnchorHTMLAttributes } from "react";
-import { CONTACT_SECTION_ID, getBookingHref, getWhatsAppHref } from "@/constants/contact-config";
+import type { ButtonHTMLAttributes } from "react";
+import { useBookingModal } from "@/components/booking/booking-modal-provider";
+import { CONTACT_SECTION_ID, getWhatsAppHref } from "@/constants/contact-config";
 import { ROUTES } from "@/constants/routes";
 import { Link } from "@/i18n/navigation";
 import { scrollToSection } from "@/utils/scroll-to-section";
 
-type AnchorProps = AnchorHTMLAttributes<HTMLAnchorElement>;
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
 function scrollToContact(e: React.MouseEvent<HTMLAnchorElement>) {
   e.preventDefault();
   scrollToSection(CONTACT_SECTION_ID);
 }
 
-/** Primary booking CTA — opens booking URL or scrolls to #contact. */
-export function BookingCtaLink({ children, onClick, ...props }: AnchorProps) {
-  const bookingHref = getBookingHref();
-
-  if (bookingHref) {
-    return (
-      <a href={bookingHref} target="_blank" rel="noopener noreferrer" onClick={onClick} {...props}>
-        {children}
-      </a>
-    );
-  }
+/** Primary booking CTA — opens the shared booking modal. */
+export function BookingCtaLink({ children, onClick, type = "button", ...props }: ButtonProps) {
+  const { openBookingModal } = useBookingModal();
 
   return (
-    <a href={`#${CONTACT_SECTION_ID}`} onClick={scrollToContact} {...props}>
+    <button
+      type={type}
+      onClick={(event) => {
+        onClick?.(event);
+        if (!event.defaultPrevented) openBookingModal();
+      }}
+      {...props}
+    >
       {children}
-    </a>
+    </button>
   );
 }
 
 /** Concierge CTA — opens WhatsApp or scrolls to #contact. */
-export function ConciergeCtaLink({ children, onClick, ...props }: AnchorProps) {
+export function ConciergeCtaLink({
+  children,
+  onClick,
+  ...props
+}: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   const whatsappHref = getWhatsAppHref();
 
   if (whatsappHref) {
@@ -52,7 +56,7 @@ export function ConciergeCtaLink({ children, onClick, ...props }: AnchorProps) {
 }
 
 /** In-page navigation to the contact section (footer links, etc.). */
-export function ContactSectionLink({ children, ...props }: AnchorProps) {
+export function ContactSectionLink({ children, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   return (
     <Link href={ROUTES.CONTACT} onClick={scrollToContact} {...props}>
       {children}

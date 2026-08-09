@@ -199,6 +199,32 @@
     "openMaps": "Ouvrir dans Google Maps",
     "openMapsAria": "Ouvrir l'emplacement de la clinique dans Google Maps"
   },
+  "BookingModal": {
+    "eyebrow": "Consultation",
+    "title": "Réserver une consultation",
+    "subtitle": "Une première conversation, en toute confidentialité.",
+    "fullNameLabel": "Nom complet",
+    "emailLabel": "Adresse e-mail",
+    "phoneLabel": "Téléphone / WhatsApp",
+    "serviceLabel": "Service souhaité",
+    "servicePlaceholder": "Sélectionner un service",
+    "messageLabel": "Message",
+    "submitCta": "Envoyer ma demande",
+    "submitError": "Une erreur est survenue. Veuillez réessayer.",
+    "closeAria": "Fermer le formulaire de réservation",
+    "closeCta": "Fermer",
+    "successTitle": "Merci pour votre demande.",
+    "successSubtitle": "Notre équipe vous contactera prochainement.",
+    "whatsappCta": "Continuer sur WhatsApp",
+    "whatsappPrefillIntro": "Bonjour, je souhaite réserver une consultation.",
+    "services": {
+      "smileAesthetics": "Esthétique du sourire",
+      "veneers": "Facettes dentaires",
+      "implants": "Implantologie",
+      "whitening": "Blanchiment",
+      "general": "Consultation générale"
+    }
+  },
   "ContactCta": {
     "eyebrow": "Commencer",
     "title": "Commencez par une <em>conversation</em>.",
