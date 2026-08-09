@@ -179,8 +179,8 @@ export function ComparisonSlider({
   ];
 
   return (
-    <article className="flex flex-col gap-10 lg:gap-12">
-      <h3 className="font-body text-heading-xl sm:text-display-sm tracking-tight text-neutral-950">
+    <article className="flex w-full min-w-0 max-w-full flex-col gap-10 lg:gap-12">
+      <h3 className="font-body min-w-0 break-words text-heading-xl tracking-tight text-neutral-950 sm:text-display-sm rtl:text-end">
         {title}
       </h3>
 
@@ -310,13 +310,15 @@ export function ComparisonSlider({
         )}
       </motion.div>
 
-      <dl className="border-border grid grid-cols-2 gap-x-10 gap-y-7 border-t pt-10 sm:grid-cols-4">
+      <dl className="border-border grid w-full min-w-0 max-w-full grid-cols-2 gap-x-4 gap-y-7 border-t pt-10 sm:grid-cols-4 sm:gap-x-8 lg:gap-x-10 rtl:text-end">
         {metadata.map((item) => (
-          <div key={item.label} className="flex flex-col gap-2">
-            <dt className="text-caption text-foreground-muted rtl:tracking-normal uppercase tracking-[0.16em]">
+          <div key={item.label} className="flex min-w-0 flex-col gap-2">
+            <dt className="text-caption text-foreground-muted break-words uppercase tracking-[0.16em] rtl:tracking-normal">
               {item.label}
             </dt>
-            <dd className="font-body text-body-md text-neutral-950 font-medium">{item.value}</dd>
+            <dd className="font-body text-body-md min-w-0 break-words font-medium leading-[1.65] text-neutral-950 [overflow-wrap:anywhere]">
+              {item.value}
+            </dd>
           </div>
         ))}
       </dl>
