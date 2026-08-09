@@ -13,12 +13,12 @@
  */
 export const ROUTES = {
   HOME: "/",
-  ABOUT: "/about",
-  SERVICES: "/services",
-  CONSULTATION: "/consultation",
-  CONTACT: "/contact",
-  PRIVACY: "/privacy",
-  TERMS: "/terms",
+  ABOUT: "/#why-aurea-heading",
+  SERVICES: "/#services-heading",
+  CONSULTATION: "/#contact-cta-heading",
+  CONTACT: "/#contact-cta-heading",
+  PRIVACY: "/#contact-cta-heading",
+  TERMS: "/#contact-cta-heading",
 } as const;
 
 export type RoutePath = (typeof ROUTES)[keyof typeof ROUTES];

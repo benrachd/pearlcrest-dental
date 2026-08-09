@@ -61,6 +61,13 @@ export function ContactCta() {
               </Button>
             </MagneticWrap>
           </div>
+
+          <div className="relative z-10 flex flex-col gap-2 text-body-sm text-foreground-muted">
+            <p>{t("demoNote")}</p>
+            <p>{t("contactEmail")}</p>
+            <p>{t("contactPhone")}</p>
+            <p>{t("contactWhatsApp")}</p>
+          </div>
           </motion.div>
         </GlassReflection>
       </div>

@@ -12,6 +12,7 @@ import {
 import { cinematicStagger, sectionReveal } from "@/animations/variants";
 import { viewportHeader } from "@/animations/viewport";
 import { ROUTES } from "@/constants/routes";
+import { demoContact } from "@/constants/demo-contact";
 import { Link } from "@/i18n/navigation";
 
 const LOCATIONS = ["dubai", "abuDhabi", "riyadh", "doha"] as const;
@@ -30,11 +31,7 @@ const SOCIAL_LINKS = [
   { labelKey: "socialFacebook", href: "https://facebook.com/aureadental", icon: FacebookIcon },
 ] as const;
 
-const CONTACT = {
-  email: "concierge@aureadental.com",
-  phone: "+971 4 123 4567",
-  whatsapp: "https://wa.me/97141234567",
-} as const;
+const CONTACT = demoContact;
 
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
@@ -127,36 +124,24 @@ export function Footer() {
             </p>
             <ul className="flex flex-col gap-4">
               <li>
-                <a
-                  href={`mailto:${CONTACT.email}`}
-                  data-cursor="interactive"
-                  className="text-body-sm text-foreground-muted group relative inline-block transition-colors duration-700 hover:text-foreground"
-                >
+                <span className="text-body-sm text-foreground-muted leading-[1.7] tracking-[0.01em]">
                   {CONTACT.email}
-                  <span className="bg-gold-500/60 ease-luxury absolute -bottom-0.5 start-0 h-px w-0 transition-[width] duration-700 group-hover:w-full" />
-                </a>
+                </span>
               </li>
               <li>
-                <a
-                  href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
-                  data-cursor="interactive"
-                  className="text-body-sm text-foreground-muted group relative inline-block transition-colors duration-700 hover:text-foreground"
-                >
+                <span className="text-body-sm text-foreground-muted leading-[1.7] tracking-[0.01em]">
                   {CONTACT.phone}
-                  <span className="bg-gold-500/60 ease-luxury absolute -bottom-0.5 start-0 h-px w-0 transition-[width] duration-700 group-hover:w-full" />
-                </a>
+                </span>
               </li>
               <li>
-                <a
-                  href={CONTACT.whatsapp}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href={ROUTES.CONTACT}
                   data-cursor="interactive"
                   className="text-body-sm text-foreground-muted ease-luxury inline-flex items-center gap-2 transition-colors duration-700 hover:text-foreground"
                 >
                   <WhatsAppIcon className="size-4" />
-                  {t("whatsappLabel")}
-                </a>
+                  {CONTACT.whatsapp}
+                </Link>
               </li>
             </ul>
           </motion.div>

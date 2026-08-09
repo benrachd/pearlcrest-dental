@@ -18,6 +18,7 @@ export function Testimonials() {
           id="testimonials-heading"
           eyebrow={t("eyebrow")}
           title={t.rich("title", { em: (chunks) => <RichTitleEmphasis>{chunks}</RichTitleEmphasis> })}
+          intro={t("intro")}
         />
 
         <div className={`${sectionContentGap} grid grid-cols-1 lg:grid-cols-3 ${gridGap}`}>
