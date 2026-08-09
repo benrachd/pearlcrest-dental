@@ -51,14 +51,14 @@ export function Navbar() {
           boxShadow,
           scale: navScale,
         }}
-        className="pointer-events-auto mx-auto flex h-10 w-full min-w-0 max-w-[1600px] transform-gpu items-center justify-between gap-2 rounded-full border border-gold-500/25 pe-1 ps-4 will-change-transform sm:gap-3 sm:ps-5 max-sm:rtl:gap-1.5 max-sm:rtl:px-2.5"
+        className="pointer-events-auto mx-auto flex h-10 w-full min-w-0 max-w-[1600px] transform-gpu items-center justify-between gap-2 rounded-full border border-gold-500/25 pe-1 ps-4 will-change-transform sm:gap-3 sm:ps-5 max-sm:rtl:gap-1.5 max-sm:rtl:px-2.5 md:rtl:flex-row-reverse md:rtl:gap-4 md:rtl:px-5"
       >
         <Link
           href={ROUTES.HOME}
           aria-label={t("homeAriaLabel")}
           data-cursor="interactive"
           dir="ltr"
-          className="group ease-luxury relative flex min-w-0 shrink items-baseline gap-1 py-1 transition-opacity duration-700 hover:opacity-80 sm:gap-2 max-sm:rtl:max-w-[38%] max-sm:rtl:gap-0.5"
+          className="group ease-luxury relative flex min-w-0 shrink-0 items-baseline gap-1 py-1 transition-opacity duration-700 hover:opacity-80 sm:gap-2 max-sm:rtl:max-w-[38%] max-sm:rtl:gap-0.5 md:rtl:shrink-0"
         >
           <motion.span
             style={{ color: logoPrimary, textShadow: logoShadow }}
@@ -79,7 +79,7 @@ export function Navbar() {
           />
         </Link>
 
-        <div className="flex min-w-0 shrink items-center gap-1.5 sm:gap-3 max-sm:rtl:gap-1">
+        <div className="flex min-w-0 shrink items-center gap-1.5 sm:gap-3 max-sm:rtl:gap-1 md:rtl:shrink-0 md:rtl:gap-3">
           <LanguageSwitcher className="max-sm:rtl:shrink-0 max-sm:rtl:[&_a]:text-[0.625rem] max-sm:rtl:[&_a]:tracking-[0.08em]" />
           <MagneticWrap strength={0.12} className="min-w-0 shrink-0">
             <BookingCtaLink
