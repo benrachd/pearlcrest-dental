@@ -32,26 +32,28 @@ export function BookingCtaLink({ children, onClick, type = "button", ...props }:
   );
 }
 
-/** Concierge CTA — opens WhatsApp or scrolls to #contact. */
-export function ConciergeCtaLink({
-  children,
-  onClick,
-  ...props
-}: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
+/** Concierge CTA — opens WhatsApp via the shared clinic URL. */
+export function ConciergeCtaLink({ children, onClick, type = "button", ...props }: ButtonProps) {
   const whatsappHref = getWhatsAppHref();
 
-  if (whatsappHref) {
-    return (
-      <a href={whatsappHref} target="_blank" rel="noopener noreferrer" onClick={onClick} {...props}>
-        {children}
-      </a>
-    );
-  }
-
   return (
-    <a href={`#${CONTACT_SECTION_ID}`} onClick={scrollToContact} {...props}>
+    <button
+      type={type}
+      onClick={(event) => {
+        onClick?.(event);
+        if (event.defaultPrevented) return;
+
+        if (whatsappHref) {
+          window.open(whatsappHref, "_blank", "noopener,noreferrer");
+          return;
+        }
+
+        scrollToSection(CONTACT_SECTION_ID);
+      }}
+      {...props}
+    >
       {children}
-    </a>
+    </button>
   );
 }
 

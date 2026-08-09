@@ -61,9 +61,25 @@ export function getMailtoHref(): string | null {
 }
 
 export function getWhatsAppHref(): string | null {
-  const { whatsappNumber } = contactConfig;
-  if (!whatsappNumber || isPlaceholder(whatsappNumber)) return null;
-  const digits = whatsappNumber.replace(/\D/g, "");
-  if (digits.length < 8) return null;
+  const { whatsappNumber, whatsapp, phone } = contactConfig;
+
+  if (isConfiguredUrl(whatsapp) && /wa\.me|whatsapp\.com/i.test(whatsapp)) {
+    return whatsapp;
+  }
+
+  const digits =
+    extractWhatsAppDigits(whatsappNumber) ??
+    extractWhatsAppDigits(whatsapp) ??
+    extractWhatsAppDigits(phone);
+
+  if (!digits) return null;
   return `https://wa.me/${digits}`;
+}
+
+function extractWhatsAppDigits(value: string | null | undefined): string | null {
+  if (!value || isPlaceholder(value)) return null;
+  if (/X/i.test(value)) return null;
+  const digits = value.replace(/\D/g, "");
+  if (digits.length < 8) return null;
+  return digits;
 }
