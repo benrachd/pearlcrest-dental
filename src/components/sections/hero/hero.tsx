@@ -56,17 +56,17 @@ export function Hero() {
         style={contentDissolve.style}
         className="px-gutter lg:px-gutter-lg pointer-events-none relative z-10 mx-auto flex w-full max-w-[1600px] flex-1 flex-col justify-end overflow-hidden pb-4 pt-24 md:px-10 md:pb-32 md:pt-36 lg:pb-40"
       >
-        <div className="pointer-events-auto flex w-full min-w-0 max-w-full flex-col items-stretch gap-8 rtl:text-end md:max-w-4xl md:items-start md:gap-16 lg:gap-[4.75rem]">
+        <div className="pointer-events-auto flex w-full min-w-0 max-w-full flex-col items-stretch gap-8 max-md:rtl:text-start md:max-w-4xl md:items-start md:rtl:max-w-[min(44rem,calc(100vw-4rem))] md:rtl:text-end md:gap-16 lg:gap-[4.75rem]">
           <HeroHeadline />
 
-          <motion.div variants={ctaReveal} initial="hidden" animate="visible" className="w-full min-w-0 md:w-auto">
+          <motion.div variants={ctaReveal} initial="hidden" animate="visible" className="w-full min-w-0 max-md:rtl:max-w-[calc(100vw-3rem)] md:w-auto">
             <HeroCta>
               <Button
                 asChild
                 variant="accent"
                 size="xl"
                 endIcon={ArrowRightGlyph}
-                className="group-hover/cta:shadow-[0_4px_32px_rgba(198,169,98,0.32),0_0_60px_rgba(198,169,98,0.18)] relative box-border h-14 min-h-14 w-full max-w-[calc(100vw-2rem)] overflow-hidden rounded-full px-4 text-body-sm leading-snug shadow-[0_2px_20px_rgba(198,169,98,0.2)] duration-700 md:h-15 md:min-h-12 md:w-auto md:max-w-none md:px-10 md:text-body-lg md:leading-normal md:whitespace-nowrap group-hover/cta:-translate-y-0.5"
+                className="group-hover/cta:shadow-[0_4px_32px_rgba(198,169,98,0.32),0_0_60px_rgba(198,169,98,0.18)] relative box-border h-14 min-h-14 w-full max-w-[calc(100vw-2rem)] overflow-hidden rounded-full px-4 text-body-sm leading-snug shadow-[0_2px_20px_rgba(198,169,98,0.2)] duration-700 max-md:rtl:max-w-full md:h-15 md:min-h-12 md:w-auto md:max-w-none md:px-10 md:text-body-lg md:leading-normal md:whitespace-nowrap group-hover/cta:-translate-y-0.5"
               >
                 <BookingCtaLink>
                   {mounted && !reduceMotion ? (

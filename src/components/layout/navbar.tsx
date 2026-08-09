@@ -51,23 +51,23 @@ export function Navbar() {
           boxShadow,
           scale: navScale,
         }}
-        className="pointer-events-auto mx-auto flex h-10 w-full max-w-[1600px] transform-gpu items-center justify-between rounded-full border border-gold-500/25 pe-1 ps-4 will-change-transform sm:ps-5"
+        className="pointer-events-auto mx-auto flex h-10 w-full max-w-[1600px] min-w-0 transform-gpu items-center justify-between rounded-full border border-gold-500/25 pe-1 ps-4 will-change-transform sm:ps-5 max-sm:rtl:grid max-sm:rtl:h-auto max-sm:rtl:min-h-10 max-sm:rtl:grid-cols-[auto_auto_minmax(0,1fr)] max-sm:rtl:items-center max-sm:rtl:gap-x-2.5 max-sm:rtl:px-2.5 max-sm:rtl:py-1"
       >
         <Link
           href={ROUTES.HOME}
           aria-label={t("homeAriaLabel")}
           data-cursor="interactive"
-          className="group ease-luxury relative flex min-w-0 shrink items-baseline gap-1.5 py-1 transition-opacity duration-700 hover:opacity-80 sm:gap-2"
+          className="group ease-luxury relative flex min-w-0 shrink items-baseline gap-1 py-1 transition-opacity duration-700 hover:opacity-80 sm:gap-2 max-sm:rtl:col-start-3 max-sm:rtl:max-w-full max-sm:rtl:justify-self-end max-sm:rtl:gap-0.5"
         >
           <motion.span
             style={{ color: logoPrimary, textShadow: logoShadow }}
-            className="font-heading text-[0.9375rem] font-medium tracking-[0.16em] sm:text-lg sm:tracking-[0.2em]"
+            className="font-heading text-[0.9375rem] font-medium tracking-[0.16em] sm:text-lg sm:tracking-[0.2em] max-sm:rtl:text-[0.8125rem] max-sm:rtl:tracking-[0.12em]"
           >
             AUREA
           </motion.span>
           <motion.span
             style={{ color: logoSecondary, textShadow: logoShadow }}
-            className="text-caption tracking-[0.18em] sm:tracking-[0.26em]"
+            className="text-caption tracking-[0.18em] sm:tracking-[0.26em] max-sm:rtl:text-[0.625rem] max-sm:rtl:tracking-[0.12em]"
           >
             DENTAL
           </motion.span>
@@ -78,14 +78,18 @@ export function Navbar() {
           />
         </Link>
 
-        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-          <LanguageSwitcher />
-          <MagneticWrap strength={0.12}>
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3 max-sm:rtl:contents">
+          <LanguageSwitcher className="max-sm:rtl:col-start-2 max-sm:rtl:justify-self-center" />
+          <MagneticWrap
+            strength={0.12}
+            className="max-sm:rtl:col-start-1 max-sm:rtl:justify-self-start max-sm:rtl:min-w-0"
+          >
           <BookingCtaLink
             data-cursor="interactive"
             className={cn(
               "group relative inline-flex h-8 shrink-0 items-center justify-center overflow-hidden rounded-full px-3.5",
               "text-body-sm font-body font-medium text-neutral-950 sm:px-4",
+              "max-sm:rtl:h-7 max-sm:rtl:max-w-[9.75rem] max-sm:rtl:px-2.5 max-sm:rtl:text-[0.6875rem] max-sm:rtl:leading-none",
               "bg-gradient-to-r from-gold-300 via-gold-500 to-gold-600",
               "shadow-[0_2px_16px_rgba(198,169,98,0.32),inset_0_1px_0_rgba(255,255,255,0.35)]",
               "transition-[box-shadow,transform,filter] duration-700 ease-luxury",
@@ -103,7 +107,7 @@ export function Navbar() {
               aria-hidden="true"
               className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-1000 ease-luxury group-hover:translate-x-full"
             />
-            <span className="relative">{t("cta")}</span>
+            <span className="relative whitespace-nowrap">{t("cta")}</span>
           </BookingCtaLink>
         </MagneticWrap>
         </div>

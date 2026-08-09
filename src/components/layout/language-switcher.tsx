@@ -11,7 +11,11 @@ const LOCALE_OPTIONS = [
   { code: "ar" as const, label: "AR" },
 ];
 
-export function LanguageSwitcher() {
+interface LanguageSwitcherProps {
+  className?: string;
+}
+
+export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   const t = useTranslations("Navbar");
   const locale = useLocale();
   const pathname = usePathname();
@@ -22,7 +26,7 @@ export function LanguageSwitcher() {
   const separatorColor = useTransform(scrollY, [0, 50], ["rgba(250, 250, 249, 0.35)", "rgba(120, 113, 108, 0.45)"]);
 
   return (
-    <nav aria-label={t("languageAriaLabel")} className="flex shrink-0 items-center">
+    <nav aria-label={t("languageAriaLabel")} className={cn("flex shrink-0 items-center", className)}>
       <ul className="flex items-center gap-1 sm:gap-1.5">
         {LOCALE_OPTIONS.map(({ code, label }, index) => {
           const isActive = locale === code;
