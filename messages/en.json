@@ -182,6 +182,23 @@
     "q6Question": "Where are Aurea clinics located?",
     "q6Answer": "Demo locations shown: Dubai, Abu Dhabi, Riyadh, and Doha — replace with your actual clinic destinations."
   },
+  "VisitAurea": {
+    "eyebrow": "Visit",
+    "title": "Visit <em>Aurea</em>.",
+    "intro": "Private consultations, by appointment.",
+    "locationsLabel": "Locations",
+    "locations": "Dubai · Abu Dhabi · Riyadh · Doha",
+    "addressLabel": "Address",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "whatsappLabel": "WhatsApp",
+    "hoursLabel": "Opening hours",
+    "mapAria": "Clinic location map",
+    "mapPlaceholder": "Add latitude, longitude, or a Google Maps embed URL in clinic-config.ts to display your clinic map here.",
+    "mapLinkPlaceholder": "Add a Google Maps URL or coordinates in clinic-config.ts to enable directions.",
+    "openMaps": "Open in Google Maps",
+    "openMapsAria": "Open clinic location in Google Maps"
+  },
   "ContactCta": {
     "eyebrow": "Begin",
     "title": "Start with a <em>conversation</em>.",

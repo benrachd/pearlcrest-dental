@@ -1,9 +1,10 @@
+import { clinicConfig } from "@/constants/clinic-config";
+
 /**
- * Editable demo contact placeholders for client presentations.
- * Replace with real clinic details before production launch.
+ * @deprecated Prefer `clinicConfig` — re-exported for existing footer usage.
  */
 export const demoContact = {
-  email: "hello@[your-clinic].com",
-  phone: "+971 XX XXX XXXX",
-  whatsapp: "WhatsApp · [your number]",
+  email: clinicConfig.email,
+  phone: clinicConfig.phone,
+  whatsapp: clinicConfig.whatsapp,
 } as const;

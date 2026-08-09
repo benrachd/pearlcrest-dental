@@ -182,6 +182,23 @@
     "q6Question": "Où se trouvent les cliniques Aurea ?",
     "q6Answer": "Destinations de démonstration : Dubaï, Abou Dabi, Riyad et Doha — remplacez-les par vos cliniques réelles."
   },
+  "VisitAurea": {
+    "eyebrow": "Visite",
+    "title": "Visitez <em>Aurea</em>.",
+    "intro": "Consultations privées, sur rendez-vous.",
+    "locationsLabel": "Implantations",
+    "locations": "Dubaï · Abou Dabi · Riyad · Doha",
+    "addressLabel": "Adresse",
+    "phoneLabel": "Téléphone",
+    "emailLabel": "E-mail",
+    "whatsappLabel": "WhatsApp",
+    "hoursLabel": "Horaires",
+    "mapAria": "Carte de la clinique",
+    "mapPlaceholder": "Ajoutez latitude, longitude ou une URL d'intégration Google Maps dans clinic-config.ts pour afficher la carte ici.",
+    "mapLinkPlaceholder": "Ajoutez une URL Google Maps ou des coordonnées dans clinic-config.ts pour activer l'itinéraire.",
+    "openMaps": "Ouvrir dans Google Maps",
+    "openMapsAria": "Ouvrir l'emplacement de la clinique dans Google Maps"
+  },
   "ContactCta": {
     "eyebrow": "Commencer",
     "title": "Commencez par une <em>conversation</em>.",

@@ -9,6 +9,7 @@ import { Services } from "@/components/sections/services";
 import { Specialists } from "@/components/sections/specialists";
 import { Testimonials } from "@/components/sections/testimonials";
 import { Trust } from "@/components/sections/trust";
+import { VisitAurea } from "@/components/sections/visit";
 import { WhyAurea } from "@/components/sections/why-aurea";
 import { WowMoment } from "@/components/sections/wow";
 import { buildMetadata } from "@/lib/metadata";
@@ -43,6 +44,7 @@ export default function HomePage() {
       <Testimonials />
       <Specialists />
       <Faq />
+      <VisitAurea />
       <ContactCta />
     </main>
   );

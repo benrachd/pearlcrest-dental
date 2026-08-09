@@ -182,6 +182,23 @@
     "q6Question": "أين تقع عيادات أوريا؟",
     "q6Answer": "وجهات تجريبية معروضة: دبي، وأبوظبي، والرياض، والدوحة — استبدلها بمواقع عيادتك الفعلية."
   },
+  "VisitAurea": {
+    "eyebrow": "زيارة",
+    "title": "زيارة <em>أوريا</em>.",
+    "intro": "استشارات خاصة، بحجز مسبق.",
+    "locationsLabel": "المواقع",
+    "locations": "دبي · أبوظبي · الرياض · الدوحة",
+    "addressLabel": "العنوان",
+    "phoneLabel": "الهاتف",
+    "emailLabel": "البريد الإلكتروني",
+    "whatsappLabel": "واتساب",
+    "hoursLabel": "ساعات العمل",
+    "mapAria": "خريطة موقع العيادة",
+    "mapPlaceholder": "أضف خط العرض وخط الطول أو رابط تضمين Google Maps في clinic-config.ts لعرض الخريطة هنا.",
+    "mapLinkPlaceholder": "أضف رابط Google Maps أو الإحداثيات في clinic-config.ts لتفعيل الاتجاهات.",
+    "openMaps": "فتح في Google Maps",
+    "openMapsAria": "فتح موقع العيادة في Google Maps"
+  },
   "ContactCta": {
     "eyebrow": "ابدأ",
     "title": "ابدأ <em>بمحادثة</em>.",
