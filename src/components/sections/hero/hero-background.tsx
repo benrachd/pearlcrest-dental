@@ -260,7 +260,14 @@ export function HeroBackground({ imageAlt, dissolveStyle }: HeroBackgroundProps)
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 max-md:bg-[radial-gradient(ellipse_72%_52%_at_24%_58%,rgba(8,6,5,0.16),transparent_70%)]"
+        className="pointer-events-none absolute inset-0 md:hidden"
+        style={{
+          background: [
+            "radial-gradient(ellipse 88% 68% at 16% 62%, rgba(8,6,5,0.46) 0%, rgba(8,6,5,0.22) 38%, transparent 72%)",
+            "radial-gradient(ellipse 62% 38% at 14% 22%, rgba(8,6,5,0.24) 0%, transparent 68%)",
+            "linear-gradient(108deg, rgba(8,6,5,0.32) 0%, rgba(8,6,5,0.14) 26%, rgba(8,6,5,0.04) 44%, transparent 62%)",
+          ].join(", "),
+        }}
       />
       <div
         aria-hidden="true"
