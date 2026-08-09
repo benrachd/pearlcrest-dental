@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { duration, easing } from "@/animations/transitions";
 import { MagneticWrap } from "@/components/common/magnetic-wrap";
 import { BookingCtaLink } from "@/components/common/contact-links";
+import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { ROUTES } from "@/constants/routes";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/utils/cn";
@@ -77,7 +78,9 @@ export function Navbar() {
           />
         </Link>
 
-        <MagneticWrap strength={0.12}>
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <LanguageSwitcher />
+          <MagneticWrap strength={0.12}>
           <BookingCtaLink
             data-cursor="interactive"
             className={cn(
@@ -103,6 +106,7 @@ export function Navbar() {
             <span className="relative">{t("cta")}</span>
           </BookingCtaLink>
         </MagneticWrap>
+        </div>
       </motion.nav>
     </motion.header>
   );

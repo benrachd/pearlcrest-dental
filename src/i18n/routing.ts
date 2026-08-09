@@ -13,15 +13,11 @@ export const routing = defineRouting({
   locales: ["en", "ar", "fr"],
   defaultLocale: "en",
 
-  // Every locale is always present in the URL (e.g. `/en`, `/ar`, `/fr`).
-  // This keeps canonical URLs unambiguous, which is important for
-  // multi-market SEO (Google Search Console properties, hreflang mapping).
-  localePrefix: "always",
+  // English at `/`; French and Arabic at `/fr` and `/ar`.
+  localePrefix: "as-needed",
 
-  // Locale is never inferred from the `Accept-Language` header once a
-  // visitor has explicitly chosen one — avoids surprising redirects for
-  // returning visitors. See `src/i18n/request.ts` / middleware config.
-  localeDetection: true,
+  // Keep `/` in English unless the visitor explicitly chooses FR or AR.
+  localeDetection: false,
 });
 
 export type AppLocale = (typeof routing.locales)[number];

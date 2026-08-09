@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
@@ -41,7 +41,14 @@ export async function generateMetadata({
     notFound();
   }
 
-  return buildMetadata({ locale, path: "/" });
+  const t = await getTranslations({ locale, namespace: "Metadata" });
+
+  return buildMetadata({
+    locale,
+    path: "/",
+    title: t("title"),
+    description: t("description"),
+  });
 }
 
 /**

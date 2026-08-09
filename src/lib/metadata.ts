@@ -1,18 +1,9 @@
 import type { Metadata } from "next";
 import { seoDefaults } from "@/constants/seo";
 import { siteConfig } from "@/constants/site";
+import { localizedPath } from "@/i18n/localized-path";
 import { routing } from "@/i18n/routing";
 import type { PageSeo } from "@/types/seo";
-
-/**
- * Builds a localized absolute path with the `/{locale}` prefix that
- * `routing.localePrefix: "always"` requires, e.g.
- * `localizedPath("fr", "/treatments") -> "/fr/treatments"`.
- */
-function localizedPath(locale: string, path: string): string {
-  const normalized = path === "/" ? "" : path;
-  return `/${locale}${normalized}`;
-}
 
 /**
  * Produces a complete, locale-aware `Metadata` object: title, description,

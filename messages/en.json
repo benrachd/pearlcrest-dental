@@ -2,11 +2,12 @@
   "Metadata": {
     "title": "Aurea Dental — Luxury Dental Care",
     "titleTemplate": "%s | Aurea Dental",
-    "description": "Premium dental clinic website demo — crafted for discerning brands preparing to launch."
+    "description": "Private luxury dental care across Dubai, Abu Dhabi, Riyadh, and Doha — smile design, implants, and concierge-led care for international patients."
   },
   "Navbar": {
     "ariaLabel": "Primary navigation",
     "homeAriaLabel": "Aurea Dental — home",
+    "languageAriaLabel": "Language selection",
     "cta": "Reserve"
   },
   "Hero": {

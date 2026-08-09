@@ -2,11 +2,12 @@
   "Metadata": {
     "title": "Aurea Dental — Soins Dentaires de Luxe",
     "titleTemplate": "%s | Aurea Dental",
-    "description": "Démo premium de site clinique dentaire — conçue pour des marques exigeantes prêtes à se lancer."
+    "description": "Soins dentaires de luxe à Dubaï, Abou Dabi, Riyad et Doha — smile design, implants et parcours conciergerie pour patients internationaux."
   },
   "Navbar": {
     "ariaLabel": "Navigation principale",
     "homeAriaLabel": "Aurea Dental — accueil",
+    "languageAriaLabel": "Sélection de la langue",
     "cta": "Réserver"
   },
   "Hero": {

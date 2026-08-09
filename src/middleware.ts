@@ -3,9 +3,9 @@ import { routing } from "@/i18n/routing";
 
 /**
  * Runs on every request (except the exclusions in `config.matcher` below) to:
- * - redirect `/` to the visitor's preferred locale (`/en`, `/ar`, `/fr`)
+ * - serve English at `/` and localized routes at `/fr`, `/ar`
  * - rewrite locale-prefixed URLs to the right App Router segment
- * - set the `NEXT_LOCALE` cookie so the choice is remembered
+ * - set the `NEXT_LOCALE` cookie when the visitor switches language
  */
 export default createMiddleware(routing);
 
@@ -15,6 +15,6 @@ export const config = {
   // images, etc.), which must never be locale-prefixed.
   //
   // The explicit `'/'` entry is required — the regex alone does not match
-  // the root path, so `/` would 404 instead of redirecting to `/en`.
+  // the root path, so `/` would 404 instead of serving English.
   matcher: ["/", "/((?!api|trpc|_next|_vercel|.*\\..*).*)"],
 };
