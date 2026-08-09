@@ -1,4 +1,4 @@
-import { Amiri, IBM_Plex_Sans_Arabic, Inter, Playfair_Display } from "next/font/google";
+import { IBM_Plex_Sans_Arabic, Inter, Noto_Naskh_Arabic, Playfair_Display } from "next/font/google";
 
 /**
  * Font configuration for Aurea Dental.
@@ -35,9 +35,10 @@ export const bodyLatin = Inter({
   display: "swap",
 });
 
-export const headingArabic = Amiri({
+/** Naskh Arabic for editorial accents — readable on mobile, pairs with Playfair Display. */
+export const headingArabic = Noto_Naskh_Arabic({
   subsets: ["arabic"],
-  weight: ["400", "700"],
+  weight: ["400", "600", "700"],
   variable: "--font-heading-arabic",
   display: "swap",
 });

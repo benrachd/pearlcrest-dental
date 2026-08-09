@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { cinematicReveal } from "@/animations/variants";
 import { viewportHeader } from "@/animations/viewport";
 import { AnimatedSectionHeader } from "@/components/common/animated-section-header";
@@ -16,6 +16,8 @@ import { contactConfig, getMailtoHref, getTelHref, getWhatsAppHref } from "@/con
 
 export function ContactCta() {
   const t = useTranslations("ContactCta");
+  const locale = useLocale();
+  const isArabic = locale === "ar";
 
   return (
     <section id="contact" aria-labelledby="contact-cta-heading" className="bg-background relative overflow-hidden">
@@ -73,14 +75,14 @@ export function ContactCta() {
             </p>
             <p>
               <ContactDetailText
-                value={contactConfig.phone}
+                value={isArabic ? t("contactPhone") : contactConfig.phone}
                 href={getTelHref()}
                 className="transition-colors duration-700 hover:text-foreground"
               />
             </p>
             <p>
               <ContactDetailText
-                value={contactConfig.whatsapp}
+                value={isArabic ? t("contactWhatsApp") : contactConfig.whatsapp}
                 href={getWhatsAppHref()}
                 className="transition-colors duration-700 hover:text-foreground"
               />

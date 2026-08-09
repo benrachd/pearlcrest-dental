@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { AnimatedSectionHeader } from "@/components/common/animated-section-header";
 import { RichTitleEmphasis } from "@/components/common/rich-title-emphasis";
 import { ArrowRightGlyph } from "@/components/sections/hero/hero-icons";
@@ -23,6 +23,8 @@ function ContactRow({ label, value }: { label: string; value: string }) {
 
 export function VisitAurea() {
   const t = useTranslations("VisitAurea");
+  const locale = useLocale();
+  const isArabic = locale === "ar";
   const mapEmbedSrc = getMapEmbedSrc();
   const mapsLink = getGoogleMapsLink();
 
@@ -60,11 +62,11 @@ export function VisitAurea() {
             </div>
 
             <dl className="flex flex-col gap-6">
-              <ContactRow label={t("addressLabel")} value={clinicConfig.address} />
-              <ContactRow label={t("phoneLabel")} value={clinicConfig.phone} />
+              <ContactRow label={t("addressLabel")} value={isArabic ? t("addressValue") : clinicConfig.address} />
+              <ContactRow label={t("phoneLabel")} value={isArabic ? t("phoneValue") : clinicConfig.phone} />
               <ContactRow label={t("emailLabel")} value={clinicConfig.email} />
-              <ContactRow label={t("whatsappLabel")} value={clinicConfig.whatsapp} />
-              <ContactRow label={t("hoursLabel")} value={clinicConfig.openingHours} />
+              <ContactRow label={t("whatsappLabel")} value={isArabic ? t("whatsappValue") : clinicConfig.whatsapp} />
+              <ContactRow label={t("hoursLabel")} value={isArabic ? t("hoursValue") : clinicConfig.openingHours} />
             </dl>
           </div>
 

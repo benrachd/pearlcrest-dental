@@ -71,7 +71,7 @@ export function WowMoment() {
           className="font-body mx-auto w-full min-w-0 max-w-full text-balance tracking-[-0.035em] text-neutral-50 leading-[1.04] max-sm:max-w-[calc(100vw-3rem)] max-sm:text-[clamp(1.875rem,7.5vw+0.75rem,2.625rem)] sm:text-[clamp(3rem,6.5vw,5.5rem)]"
         >
           <span className="block max-w-full">{t("line1")}</span>
-          <span className="text-gold-200/90 mt-2 block max-w-full font-light italic">{t("line2")}</span>
+          <span className="text-gold-200/90 mt-2 block max-w-full font-light italic rtl:font-heading rtl:not-italic">{t("line2")}</span>
         </motion.h2>
         <motion.div
           initial={reduceMotion ? false : { scaleX: 0, opacity: 0 }}

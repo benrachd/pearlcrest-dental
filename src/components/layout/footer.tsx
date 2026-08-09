@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import {
   FacebookIcon,
   InstagramIcon,
@@ -66,6 +66,8 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
 
 export function Footer() {
   const t = useTranslations("Footer");
+  const locale = useLocale();
+  const isArabic = locale === "ar";
   const year = new Date().getFullYear();
   const footerRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -150,7 +152,7 @@ export function Footer() {
               </li>
               <li>
                 <ContactDetailText
-                  value={contactConfig.phone}
+                  value={isArabic ? t("contactPhoneDisplay") : contactConfig.phone}
                   href={getTelHref()}
                   className={contactDetailClass}
                 />
@@ -161,7 +163,7 @@ export function Footer() {
                   className="text-body-sm text-foreground-muted ease-luxury inline-flex items-center gap-2 transition-colors duration-700 hover:text-foreground"
                 >
                   <WhatsAppIcon className="size-4" />
-                  {contactConfig.whatsapp}
+                  {isArabic ? t("contactWhatsAppDisplay") : contactConfig.whatsapp}
                 </ConciergeCtaLink>
               </li>
             </ul>
