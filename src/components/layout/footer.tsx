@@ -9,16 +9,13 @@ import {
   LinkedInIcon,
   WhatsAppIcon,
 } from "@/components/layout/footer-icons";
-import {
-  ContactDetailText,
-  ConciergeCtaLink,
-  ContactSectionLink,
-} from "@/components/common/contact-links";
+import { ContactDetailText, ConciergeCtaLink } from "@/components/common/contact-links";
 import { cinematicStagger, sectionReveal } from "@/animations/variants";
 import { viewportHeader } from "@/animations/viewport";
 import { ROUTES } from "@/constants/routes";
 import { contactConfig, getMailtoHref, getTelHref } from "@/constants/contact-config";
 import { Link } from "@/i18n/navigation";
+import { handleHashLinkClick } from "@/utils/scroll-to-section";
 
 const LOCATIONS = ["dubai", "abuDhabi", "riyadh", "doha"] as const;
 
@@ -47,12 +44,17 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
     <span className="bg-gold-500/60 ease-luxury absolute -bottom-0.5 start-0 h-px w-0 transition-[width] duration-700 group-hover:w-full" />
   );
 
-  if (href.includes("#contact")) {
+  if (href.includes("#")) {
     return (
-      <ContactSectionLink data-cursor="interactive" className={footerLinkClass}>
+      <Link
+        href={href}
+        data-cursor="interactive"
+        className={footerLinkClass}
+        onClick={(event) => handleHashLinkClick(event, href)}
+      >
         {children}
         {underline}
-      </ContactSectionLink>
+      </Link>
     );
   }
 

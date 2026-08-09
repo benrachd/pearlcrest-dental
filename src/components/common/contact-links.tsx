@@ -5,14 +5,9 @@ import { useBookingModal } from "@/components/booking/booking-modal-provider";
 import { CONTACT_SECTION_ID, getWhatsAppHref } from "@/constants/contact-config";
 import { ROUTES } from "@/constants/routes";
 import { Link } from "@/i18n/navigation";
-import { scrollToSection } from "@/utils/scroll-to-section";
+import { handleHashLinkClick, scrollToSection } from "@/utils/scroll-to-section";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
-
-function scrollToContact(e: React.MouseEvent<HTMLAnchorElement>) {
-  e.preventDefault();
-  scrollToSection(CONTACT_SECTION_ID);
-}
 
 /** Primary booking CTA — opens the shared booking modal. */
 export function BookingCtaLink({ children, onClick, type = "button", ...props }: ButtonProps) {
@@ -60,7 +55,7 @@ export function ConciergeCtaLink({ children, onClick, type = "button", ...props 
 /** In-page navigation to the contact section (footer links, etc.). */
 export function ContactSectionLink({ children, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   return (
-    <Link href={ROUTES.CONTACT} onClick={scrollToContact} {...props}>
+    <Link href={ROUTES.CONTACT} onClick={(event) => handleHashLinkClick(event, ROUTES.CONTACT)} {...props}>
       {children}
     </Link>
   );

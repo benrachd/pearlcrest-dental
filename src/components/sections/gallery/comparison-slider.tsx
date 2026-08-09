@@ -9,6 +9,7 @@ import {
   useTransform,
 } from "framer-motion";
 import Image from "next/image";
+import { useLocale } from "next-intl";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { cn } from "@/utils/cn";
@@ -17,6 +18,10 @@ import { cn } from "@/utils/cn";
 const IMAGE_POSITION = "object-cover object-center";
 
 const RELEASE_SPRING = { stiffness: 280, damping: 32, mass: 0.8 };
+/** Keeps the 3.5rem handle rail fully inside the image at every viewport width. */
+const SLIDER_EDGE_INSET = "1.75rem";
+const SLIDER_MIN = 7;
+const SLIDER_MAX = 93;
 
 export interface ComparisonSliderProps {
   title: string;
@@ -91,6 +96,8 @@ export function ComparisonSlider({
   priority = false,
   featured = false,
 }: ComparisonSliderProps) {
+  const locale = useLocale();
+  const isRtl = locale === "ar";
   const reduceMotion = useReducedMotion();
   const containerRef = useRef<HTMLDivElement>(null);
   const [loaded, setLoaded] = useState({ before: false, after: false });
@@ -102,8 +109,13 @@ export function ComparisonSlider({
     position,
     isDragging ? { stiffness: 900, damping: 45, mass: 0.2 } : RELEASE_SPRING,
   );
-  const clipPath = useTransform(springPosition, (value) => `inset(0 ${100 - value}% 0 0)`);
-  const handleLeft = useTransform(springPosition, (value) => `${value}%`);
+  const clipPath = useTransform(springPosition, (value) =>
+    isRtl ? `inset(0 0 0 ${value}%)` : `inset(0 ${100 - value}% 0 0)`,
+  );
+  const handleLeft = useTransform(
+    springPosition,
+    (value) => `clamp(${SLIDER_EDGE_INSET}, ${value}%, calc(100% - ${SLIDER_EDGE_INSET}))`,
+  );
   const [sliderValue, setSliderValue] = useState(50);
 
   const lastMoveRef = useRef({ x: 0, time: 0 });
@@ -130,10 +142,10 @@ export function ComparisonSlider({
         lastMoveRef.current = { x: clientX, time: now };
       }
 
-      const isRtl = getComputedStyle(containerRef.current!).direction === "rtl";
+      const isRtlContainer = getComputedStyle(containerRef.current!).direction === "rtl";
       const ratio = (clientX - rect.left) / rect.width;
-      const pct = isRtl ? (1 - ratio) * 100 : ratio * 100;
-      position.set(Math.max(4, Math.min(96, pct)));
+      const pct = isRtlContainer ? (1 - ratio) * 100 : ratio * 100;
+      position.set(Math.max(SLIDER_MIN, Math.min(SLIDER_MAX, pct)));
     },
     [position],
   );
@@ -145,7 +157,7 @@ export function ComparisonSlider({
     const velocityPct = (velocityRef.current / rect.width) * 100 * 12;
     if (Math.abs(velocityPct) < 0.4) return;
 
-    const target = Math.max(4, Math.min(96, position.get() + velocityPct));
+    const target = Math.max(SLIDER_MIN, Math.min(SLIDER_MAX, position.get() + velocityPct));
     animate(position, target, {
       type: "spring",
       ...RELEASE_SPRING,
@@ -159,11 +171,11 @@ export function ComparisonSlider({
 
     if (event.key === "ArrowLeft") {
       event.preventDefault();
-      animate(position, Math.max(4, current - step), RELEASE_SPRING);
+      animate(position, Math.max(SLIDER_MIN, current - step), RELEASE_SPRING);
     }
     if (event.key === "ArrowRight") {
       event.preventDefault();
-      animate(position, Math.min(96, current + step), RELEASE_SPRING);
+      animate(position, Math.min(SLIDER_MAX, current + step), RELEASE_SPRING);
     }
   };
 
@@ -179,8 +191,8 @@ export function ComparisonSlider({
   ];
 
   return (
-    <article className="flex w-full min-w-0 max-w-full flex-col gap-10 lg:gap-12">
-      <h3 className="font-body min-w-0 break-words text-heading-xl tracking-tight text-neutral-950 sm:text-display-sm rtl:text-end">
+    <article className="box-border flex w-full min-w-0 max-w-full flex-col gap-10 lg:gap-12">
+      <h3 className="font-body box-border min-w-0 max-w-full break-words text-heading-xl tracking-tight text-neutral-950 sm:text-display-sm rtl:text-end">
         {title}
       </h3>
 
@@ -193,12 +205,12 @@ export function ComparisonSlider({
         role="slider"
         tabIndex={0}
         aria-label={sliderAriaLabel}
-        aria-valuemin={4}
-        aria-valuemax={96}
+        aria-valuemin={SLIDER_MIN}
+        aria-valuemax={SLIDER_MAX}
         aria-valuenow={sliderValue}
         onKeyDown={handleKeyDown}
         className={cn(
-          "group relative aspect-[16/10] touch-none select-none overflow-hidden rounded-2xl",
+          "group relative box-border aspect-[16/10] w-full max-w-full min-w-0 touch-none select-none overflow-hidden rounded-2xl",
           featured ? "shadow-2xl" : "shadow-lg",
           "border-border/50 border outline-none focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:ring-offset-2",
           isReady ? "bg-neutral-100" : "bg-neutral-100/80",
@@ -237,7 +249,7 @@ export function ComparisonSlider({
 
         <div
           className={cn(
-            "absolute inset-0 transition-transform duration-[1400ms] ease-luxury",
+            "absolute inset-0 max-w-full transition-transform duration-[1400ms] ease-luxury",
             isHovering && !isDragging && isReady && "scale-[1.03]",
           )}
         >
@@ -270,7 +282,7 @@ export function ComparisonSlider({
               initial={{ opacity: 0, x: -12 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-caption bg-neutral-950/45 text-neutral-50 rtl:tracking-normal pointer-events-none absolute end-5 top-5 rounded-full px-4 py-1.5 uppercase tracking-[0.2em] backdrop-blur-md"
+              className="text-caption bg-neutral-950/45 text-neutral-50 rtl:tracking-normal pointer-events-none absolute end-3 top-3 max-w-[calc(50%-1.5rem)] rounded-full px-3 py-1.5 text-center uppercase tracking-[0.2em] backdrop-blur-md sm:end-5 sm:top-5 sm:px-4"
             >
               {beforeLabel}
             </motion.span>
@@ -278,7 +290,7 @@ export function ComparisonSlider({
               initial={{ opacity: 0, x: 12 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.65, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-caption bg-gold-600/80 text-neutral-50 rtl:tracking-normal pointer-events-none absolute start-5 top-5 rounded-full px-4 py-1.5 uppercase tracking-[0.2em] backdrop-blur-md"
+              className="text-caption bg-gold-600/80 text-neutral-50 rtl:tracking-normal pointer-events-none absolute start-3 top-3 max-w-[calc(50%-1.5rem)] rounded-full px-3 py-1.5 text-center uppercase tracking-[0.2em] backdrop-blur-md sm:start-5 sm:top-5 sm:px-4"
             >
               {afterLabel}
             </motion.span>
@@ -288,7 +300,7 @@ export function ComparisonSlider({
         {isReady && (
           <motion.div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-y-0 z-10 flex w-14 -translate-x-1/2 items-center justify-center will-change-[left]"
+            className="pointer-events-none absolute inset-y-0 z-10 flex w-14 -translate-x-1/2 items-center justify-center will-change-[left] rtl:translate-x-1/2"
             style={{ left: handleLeft }}
           >
             <span
@@ -310,13 +322,13 @@ export function ComparisonSlider({
         )}
       </motion.div>
 
-      <dl className="border-border grid w-full min-w-0 max-w-full grid-cols-2 gap-x-4 gap-y-7 border-t pt-10 sm:grid-cols-4 sm:gap-x-8 lg:gap-x-10 rtl:text-end">
+      <dl className="border-border box-border grid w-full min-w-0 max-w-full grid-cols-2 gap-x-3 gap-y-6 border-t pt-8 sm:grid-cols-4 sm:gap-x-8 sm:gap-y-7 sm:pt-10 lg:gap-x-10 rtl:text-end">
         {metadata.map((item) => (
-          <div key={item.label} className="flex min-w-0 flex-col gap-2">
-            <dt className="text-caption text-foreground-muted break-words uppercase tracking-[0.16em] rtl:tracking-normal">
+          <div key={item.label} className="box-border flex min-w-0 max-w-full flex-col gap-1.5 sm:gap-2">
+            <dt className="text-caption text-foreground-muted max-w-full break-words uppercase tracking-[0.16em] rtl:tracking-normal">
               {item.label}
             </dt>
-            <dd className="font-body text-body-md min-w-0 break-words font-medium leading-[1.65] text-neutral-950 [overflow-wrap:anywhere]">
+            <dd className="font-body text-body-md max-w-full min-w-0 break-words font-medium leading-[1.65] text-neutral-950 [overflow-wrap:anywhere]">
               {item.value}
             </dd>
           </div>

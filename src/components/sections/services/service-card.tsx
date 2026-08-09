@@ -6,6 +6,7 @@ import { cardEditorial, cardEditorialHover, imageHoverZoom } from "@/constants/s
 import type { RoutePath } from "@/constants/routes";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/utils/cn";
+import { handleHashLinkClick } from "@/utils/scroll-to-section";
 
 export interface ServiceCardProps {
   title: string;
@@ -25,7 +26,7 @@ export function ServiceCard({
   priority = false,
 }: ServiceCardProps) {
   return (
-    <Link href={href} className="group block">
+    <Link href={href} className="group block" onClick={(event) => handleHashLinkClick(event, href)}>
       <LuxuryCard className={cn(cardEditorial, cardEditorialHover)}>
         <ScrollParallax offset={16} className="relative aspect-[3/2] overflow-hidden">
           <EditorialImage

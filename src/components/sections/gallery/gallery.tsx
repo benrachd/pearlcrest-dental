@@ -41,7 +41,7 @@ export function Gallery() {
           className="mx-auto max-w-3xl"
         />
 
-        <div className="mx-auto mt-28 flex w-full min-w-0 max-w-5xl flex-col gap-36 lg:mt-36 lg:gap-48">
+        <div className="mx-auto mt-28 box-border flex w-full min-w-0 max-w-5xl flex-col gap-36 lg:mt-36 lg:gap-48">
           {CASES.map((item, index) => (
             <motion.div
               key={item.key}
@@ -50,16 +50,16 @@ export function Gallery() {
               initial="hidden"
               whileInView="visible"
               viewport={viewportContent}
-              className={cn("min-w-0 w-full max-w-full", index === 0 && "relative")}
+              className={cn("box-border min-w-0 w-full max-w-full overflow-hidden", index === 0 && "relative")}
               data-cursor="interactive"
             >
               {index === 0 && (
                 <div
                   aria-hidden="true"
-                  className="from-gold-100/15 pointer-events-none absolute -inset-8 rounded-3xl bg-gradient-to-b via-transparent to-transparent blur-2xl"
+                  className="from-gold-100/15 pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-b via-transparent to-transparent blur-2xl"
                 />
               )}
-              <GlassReflection className="min-w-0 w-full max-w-full rounded-2xl">
+              <GlassReflection className="box-border min-w-0 w-full max-w-full rounded-2xl">
                 <ComparisonSlider
                   title={t(`${item.key}Title`)}
                   beforeSrc={item.before}
