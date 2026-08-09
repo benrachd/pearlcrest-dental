@@ -20,8 +20,8 @@ export {
  */
 export const clinicConfig = {
   ...contactConfig,
-  address: "[Clinic address]",
-  openingHours: "[Opening hours]",
+  address: "Private consultations · Dubai · Abu Dhabi · Riyadh · Doha",
+  openingHours: "Monday – Friday · by appointment",
   /** Set when the client provides coordinates (e.g. 25.2048). */
   latitude: null as number | null,
   /** Set when the client provides coordinates (e.g. 55.2708). */

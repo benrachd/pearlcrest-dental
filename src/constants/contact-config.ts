@@ -3,9 +3,9 @@
  * Used by all booking/contact CTAs, tel/mailto links, and WhatsApp actions.
  */
 export const contactConfig = {
-  phone: "[Clinic phone]",
-  email: "[Clinic email]",
-  whatsapp: "[Clinic WhatsApp]",
+  phone: "By private appointment",
+  email: "contact@aureadental.com",
+  whatsapp: "WhatsApp concierge",
   /** E.164-style digits only, e.g. "971501234567" — enables wa.me links when set. */
   whatsappNumber: null as string | null,
   bookingUrl: "[Booking URL]",
