@@ -101,8 +101,54 @@ export function HeroBackground({ imageAlt, dissolveStyle }: HeroBackgroundProps)
       className="absolute inset-0 overflow-hidden bg-neutral-950 [perspective:1400px]"
       style={dissolveStyle}
     >
+      {/* Mobile — zoomed-out editorial portrait on the right (45/55 split) */}
+      <div className="absolute inset-0 md:hidden">
+        <div className="pointer-events-none absolute inset-y-0 start-0 z-[1] w-[43%] bg-neutral-950" />
+        <div className="pointer-events-none absolute inset-y-0 start-[40%] z-[1] h-full w-[10%] bg-gradient-to-r from-neutral-950 to-transparent" />
+
+        <motion.div
+          className="absolute inset-y-0 end-0 w-[57%] overflow-hidden"
+          style={reduceMotion ? undefined : { y: scrollParallaxY }}
+        >
+          <div className="absolute -start-[112%] -top-[2%] -bottom-[2%] -end-[6%]">
+            <Image
+              src={HERO_IMAGE}
+              alt=""
+              aria-hidden
+              fill
+              priority
+              sizes="60vw"
+              className="object-cover object-[70%_38%] blur-[2px] brightness-[0.88] saturate-[0.92]"
+            />
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="absolute inset-y-0 end-0 w-[57%] overflow-hidden"
+          style={
+            reduceMotion
+              ? { y: scrollParallaxY }
+              : {
+                  y: scrollParallaxY,
+                  x: subjectX,
+                }
+          }
+        >
+          <div className="absolute -start-[112%] -top-[2%] -bottom-[2%] -end-[6%]">
+            <Image
+              src={HERO_IMAGE}
+              alt={imageAlt}
+              fill
+              priority
+              sizes="60vw"
+              className="object-cover object-[70%_38%] contrast-[1.055] saturate-[1.045] brightness-[1.035]"
+            />
+          </div>
+        </motion.div>
+      </div>
+
       <motion.div
-        className="absolute inset-x-0 -inset-y-[6%] scale-[0.96] transform-gpu will-change-transform md:-inset-y-[12%] md:scale-110"
+        className="absolute inset-x-0 -inset-y-[6%] hidden scale-[0.96] transform-gpu will-change-transform md:block md:-inset-y-[12%] md:scale-110"
         style={reduceMotion ? undefined : { x: bgX, y: bgY }}
       >
         <motion.div
@@ -124,7 +170,7 @@ export function HeroBackground({ imageAlt, dissolveStyle }: HeroBackgroundProps)
       </motion.div>
 
       <motion.div
-        className="absolute inset-x-0 -inset-y-[12%] scale-[0.96] transform-gpu will-change-transform md:-inset-y-[8%] md:scale-100"
+        className="absolute inset-x-0 -inset-y-[12%] hidden scale-[0.96] transform-gpu will-change-transform md:block md:-inset-y-[8%] md:scale-100"
         style={
           reduceMotion
             ? undefined
@@ -156,24 +202,24 @@ export function HeroBackground({ imageAlt, dissolveStyle }: HeroBackgroundProps)
 
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 md:hidden">
         <div
-          className="absolute inset-0 opacity-[0.48] mix-blend-soft-light blur-[1.5px]"
+          className="absolute inset-0 opacity-[0.46] mix-blend-soft-light blur-[1.5px]"
           style={{
             background:
-              "radial-gradient(ellipse 11% 6.5% at 73% 41%, rgba(255,251,246,0.9) 0%, rgba(255,246,235,0.35) 38%, transparent 72%)",
+              "radial-gradient(ellipse 10% 6% at 77% 33%, rgba(255,251,246,0.88) 0%, rgba(255,246,235,0.32) 38%, transparent 72%)",
           }}
         />
         <div
-          className="absolute inset-0 opacity-[0.3] mix-blend-screen"
+          className="absolute inset-0 opacity-[0.28] mix-blend-screen"
           style={{
             background:
-              "radial-gradient(ellipse 6% 3.5% at 71% 40%, rgba(255,254,252,0.7) 0%, rgba(255,250,245,0.22) 42%, transparent 70%)",
+              "radial-gradient(ellipse 5.5% 3.2% at 75% 32%, rgba(255,254,252,0.68) 0%, rgba(255,250,245,0.2) 42%, transparent 70%)",
           }}
         />
         <div
-          className="absolute inset-0 opacity-[0.2] mix-blend-overlay blur-[2px]"
+          className="absolute inset-0 opacity-[0.18] mix-blend-overlay blur-[2px]"
           style={{
             background:
-              "radial-gradient(ellipse 9% 5.5% at 72.5% 41%, rgba(255,252,249,0.5) 0%, transparent 68%)",
+              "radial-gradient(ellipse 8.5% 5% at 76.5% 33%, rgba(255,252,249,0.48) 0%, transparent 68%)",
           }}
         />
       </div>
@@ -184,8 +230,8 @@ export function HeroBackground({ imageAlt, dissolveStyle }: HeroBackgroundProps)
         style={reduceMotion ? undefined : { x: fgX, y: fgY }}
       >
         <div className="absolute inset-x-0 bottom-0 h-[52%] bg-gradient-to-t from-neutral-950/60 via-transparent to-transparent md:h-[45%] md:from-neutral-950/50" />
-        <div className="absolute inset-0 bg-gradient-to-tr from-neutral-950/45 via-transparent via-45% to-transparent md:hidden" />
-        <div className="absolute inset-y-0 start-0 w-[45%] bg-gradient-to-r from-neutral-950/62 via-neutral-950/24 to-transparent md:hidden" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-neutral-950/55 via-neutral-950/20 via-42% to-transparent md:hidden" />
+        <div className="absolute inset-y-0 start-0 w-[46%] bg-gradient-to-r from-neutral-950 via-neutral-950/70 to-transparent md:hidden" />
         <div className="absolute bottom-[12%] start-[8%] size-32 rounded-full bg-gold-200/8 blur-3xl" />
         <div className="absolute bottom-[20%] end-[12%] size-40 rounded-full bg-neutral-50/6 blur-3xl" />
       </motion.div>
@@ -229,7 +275,7 @@ export function HeroBackground({ imageAlt, dissolveStyle }: HeroBackgroundProps)
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 max-md:bg-[radial-gradient(ellipse_95%_88%_at_18%_50%,rgba(8,6,5,0.5),transparent_52%)]"
+        className="pointer-events-none absolute inset-0 max-md:bg-[radial-gradient(ellipse_100%_92%_at_16%_48%,rgba(8,6,5,0.58),transparent_48%)]"
       />
       <div
         aria-hidden="true"
