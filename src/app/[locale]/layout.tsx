@@ -7,6 +7,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { AmbientAtmosphere } from "@/components/common/ambient-atmosphere";
 import { AmbientParticles } from "@/components/common/ambient-particles";
 import { CustomCursor } from "@/components/common/custom-cursor";
+import { HashScrollHandler } from "@/components/common/hash-scroll-handler";
 import { LoadingScreen } from "@/components/common/loading-screen";
 import { MotionProvider } from "@/components/providers/motion-provider";
 import { LenisProvider } from "@/components/providers/lenis-provider";
@@ -69,6 +70,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         <NextIntlClientProvider locale={typedLocale} messages={messages}>
           <MotionProvider>
             <LenisProvider>
+              <HashScrollHandler />
               <LoadingScreen />
               <CustomCursor />
               <AmbientAtmosphere />

@@ -1,3 +1,4 @@
+export * from "@/constants/contact-config";
 export * from "@/constants/clinic-config";
 export * from "@/constants/routes";
 export * from "@/constants/seo";

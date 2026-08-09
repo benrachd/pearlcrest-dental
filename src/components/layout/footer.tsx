@@ -9,10 +9,15 @@ import {
   LinkedInIcon,
   WhatsAppIcon,
 } from "@/components/layout/footer-icons";
+import {
+  ContactDetailText,
+  ConciergeCtaLink,
+  ContactSectionLink,
+} from "@/components/common/contact-links";
 import { cinematicStagger, sectionReveal } from "@/animations/variants";
 import { viewportHeader } from "@/animations/viewport";
 import { ROUTES } from "@/constants/routes";
-import { demoContact } from "@/constants/demo-contact";
+import { contactConfig, getMailtoHref, getTelHref } from "@/constants/contact-config";
 import { Link } from "@/i18n/navigation";
 
 const LOCATIONS = ["dubai", "abuDhabi", "riyadh", "doha"] as const;
@@ -31,17 +36,30 @@ const SOCIAL_LINKS = [
   { labelKey: "socialFacebook", href: "https://facebook.com/aureadental", icon: FacebookIcon },
 ] as const;
 
-const CONTACT = demoContact;
+const contactDetailClass =
+  "text-body-sm text-foreground-muted leading-[1.7] tracking-[0.01em] transition-colors duration-700 hover:text-foreground";
+
+const footerLinkClass =
+  "text-body-sm text-foreground-muted group relative inline-block transition-colors duration-700 hover:text-foreground";
 
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
+  const underline = (
+    <span className="bg-gold-500/60 ease-luxury absolute -bottom-0.5 start-0 h-px w-0 transition-[width] duration-700 group-hover:w-full" />
+  );
+
+  if (href.includes("#contact")) {
+    return (
+      <ContactSectionLink data-cursor="interactive" className={footerLinkClass}>
+        {children}
+        {underline}
+      </ContactSectionLink>
+    );
+  }
+
   return (
-    <Link
-      href={href}
-      data-cursor="interactive"
-      className="text-body-sm text-foreground-muted group relative inline-block transition-colors duration-700 hover:text-foreground"
-    >
+    <Link href={href} data-cursor="interactive" className={footerLinkClass}>
       {children}
-      <span className="bg-gold-500/60 ease-luxury absolute -bottom-0.5 start-0 h-px w-0 transition-[width] duration-700 group-hover:w-full" />
+      {underline}
     </Link>
   );
 }
@@ -124,24 +142,27 @@ export function Footer() {
             </p>
             <ul className="flex flex-col gap-4">
               <li>
-                <span className="text-body-sm text-foreground-muted leading-[1.7] tracking-[0.01em]">
-                  {CONTACT.email}
-                </span>
+                <ContactDetailText
+                  value={contactConfig.email}
+                  href={getMailtoHref()}
+                  className={contactDetailClass}
+                />
               </li>
               <li>
-                <span className="text-body-sm text-foreground-muted leading-[1.7] tracking-[0.01em]">
-                  {CONTACT.phone}
-                </span>
+                <ContactDetailText
+                  value={contactConfig.phone}
+                  href={getTelHref()}
+                  className={contactDetailClass}
+                />
               </li>
               <li>
-                <Link
-                  href={ROUTES.CONTACT}
+                <ConciergeCtaLink
                   data-cursor="interactive"
                   className="text-body-sm text-foreground-muted ease-luxury inline-flex items-center gap-2 transition-colors duration-700 hover:text-foreground"
                 >
                   <WhatsAppIcon className="size-4" />
-                  {CONTACT.whatsapp}
-                </Link>
+                  {contactConfig.whatsapp}
+                </ConciergeCtaLink>
               </li>
             </ul>
           </motion.div>

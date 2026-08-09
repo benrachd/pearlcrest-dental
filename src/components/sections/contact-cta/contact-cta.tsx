@@ -5,20 +5,20 @@ import { useTranslations } from "next-intl";
 import { cinematicReveal } from "@/animations/variants";
 import { viewportHeader } from "@/animations/viewport";
 import { AnimatedSectionHeader } from "@/components/common/animated-section-header";
+import { BookingCtaLink, ConciergeCtaLink, ContactDetailText } from "@/components/common/contact-links";
 import { GlassReflection } from "@/components/common/glass-reflection";
 import { MagneticWrap } from "@/components/common/magnetic-wrap";
 import { RichTitleEmphasis } from "@/components/common/rich-title-emphasis";
 import { ArrowRightGlyph } from "@/components/sections/hero/hero-icons";
 import { Button } from "@/components/ui/button";
 import { ctaPrimaryClasses, ctaSecondaryClasses, sectionShell } from "@/constants/surface-classes";
-import { ROUTES } from "@/constants/routes";
-import { Link } from "@/i18n/navigation";
+import { contactConfig, getMailtoHref, getTelHref, getWhatsAppHref } from "@/constants/contact-config";
 
 export function ContactCta() {
   const t = useTranslations("ContactCta");
 
   return (
-    <section aria-labelledby="contact-cta-heading" className="bg-background relative overflow-hidden">
+    <section id="contact" aria-labelledby="contact-cta-heading" className="bg-background relative overflow-hidden">
       <div aria-hidden="true" className="from-gold-100/30 absolute inset-0 bg-gradient-to-br via-transparent to-transparent" />
       <div
         aria-hidden="true"
@@ -52,21 +52,39 @@ export function ContactCta() {
           <div className="relative z-10 flex w-full flex-col gap-4 sm:w-auto sm:flex-row">
             <MagneticWrap>
               <Button asChild variant="accent" size="xl" endIcon={ArrowRightGlyph} className={ctaPrimaryClasses}>
-                <Link href={ROUTES.CONSULTATION}>{t("ctaPrimary")}</Link>
+                <BookingCtaLink>{t("ctaPrimary")}</BookingCtaLink>
               </Button>
             </MagneticWrap>
             <MagneticWrap strength={0.12}>
               <Button asChild variant="outline" size="xl" className={ctaSecondaryClasses}>
-                <Link href={ROUTES.CONTACT}>{t("ctaSecondary")}</Link>
+                <ConciergeCtaLink>{t("ctaSecondary")}</ConciergeCtaLink>
               </Button>
             </MagneticWrap>
           </div>
 
           <div className="relative z-10 flex flex-col gap-2 text-body-sm text-foreground-muted">
             <p>{t("demoNote")}</p>
-            <p>{t("contactEmail")}</p>
-            <p>{t("contactPhone")}</p>
-            <p>{t("contactWhatsApp")}</p>
+            <p>
+              <ContactDetailText
+                value={contactConfig.email}
+                href={getMailtoHref()}
+                className="transition-colors duration-700 hover:text-foreground"
+              />
+            </p>
+            <p>
+              <ContactDetailText
+                value={contactConfig.phone}
+                href={getTelHref()}
+                className="transition-colors duration-700 hover:text-foreground"
+              />
+            </p>
+            <p>
+              <ContactDetailText
+                value={contactConfig.whatsapp}
+                href={getWhatsAppHref()}
+                className="transition-colors duration-700 hover:text-foreground"
+              />
+            </p>
           </div>
           </motion.div>
         </GlassReflection>

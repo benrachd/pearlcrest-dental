@@ -16,9 +16,8 @@ import {
 import { ArrowRightGlyph } from "@/components/sections/hero/hero-icons";
 import { ScrollIndicator } from "@/components/sections/hero/scroll-indicator";
 import { Button } from "@/components/ui/button";
-import { ROUTES } from "@/constants/routes";
+import { BookingCtaLink } from "@/components/common/contact-links";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
-import { Link } from "@/i18n/navigation";
 
 export function Hero() {
   const t = useTranslations("Hero");
@@ -69,7 +68,7 @@ export function Hero() {
                 endIcon={ArrowRightGlyph}
                 className="group-hover/cta:shadow-[0_4px_32px_rgba(198,169,98,0.32),0_0_60px_rgba(198,169,98,0.18)] relative box-border h-14 min-h-14 w-full max-w-[calc(100vw-2rem)] overflow-hidden rounded-full px-4 text-body-sm leading-snug shadow-[0_2px_20px_rgba(198,169,98,0.2)] duration-700 md:h-15 md:min-h-12 md:w-auto md:max-w-none md:px-10 md:text-body-lg md:leading-normal md:whitespace-nowrap group-hover/cta:-translate-y-0.5"
               >
-                <Link href={ROUTES.CONSULTATION}>
+                <BookingCtaLink>
                   {mounted && !reduceMotion ? (
                     <motion.span
                       aria-hidden="true"
@@ -84,7 +83,7 @@ export function Hero() {
                     />
                   ) : null}
                   {t("ctaPrimary")}
-                </Link>
+                </BookingCtaLink>
               </Button>
             </HeroCta>
           </motion.div>

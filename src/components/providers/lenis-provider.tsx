@@ -22,6 +22,8 @@ export function LenisProvider({ children }: WithChildren) {
       touchMultiplier: 1.2,
     });
 
+    window.__lenis = lenis;
+
     let frameId = 0;
     const raf = (time: number) => {
       lenis.raf(time);
@@ -34,6 +36,7 @@ export function LenisProvider({ children }: WithChildren) {
     return () => {
       cancelAnimationFrame(frameId);
       lenis.destroy();
+      delete window.__lenis;
       document.documentElement.classList.remove("lenis", "lenis-smooth");
     };
   }, [reduceMotion]);

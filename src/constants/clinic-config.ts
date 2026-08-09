@@ -1,12 +1,24 @@
+import {
+  contactConfig,
+  isConfiguredUrl,
+} from "@/constants/contact-config";
+
+export { contactConfig, CONTACT_SECTION_ID } from "@/constants/contact-config";
+export {
+  getBookingHref,
+  getMailtoHref,
+  getTelHref,
+  getWhatsAppHref,
+  isBookingUrlConfigured,
+} from "@/constants/contact-config";
+
 /**
  * Central clinic configuration — replace placeholders before production launch.
- * All location, contact, and map values are edited here only.
+ * Contact/booking fields live in `contactConfig`; location & map fields here.
  */
 export const clinicConfig = {
+  ...contactConfig,
   address: "[Clinic address]",
-  phone: "[Clinic phone]",
-  email: "[Clinic email]",
-  whatsapp: "[Clinic WhatsApp]",
   openingHours: "[Opening hours]",
   /** Set when the client provides coordinates (e.g. 25.2048). */
   latitude: null as number | null,
@@ -23,12 +35,8 @@ export const clinicConfig = {
 
 export type ClinicConfig = typeof clinicConfig;
 
-function isPlaceholder(value: string): boolean {
-  return value.includes("[") || value.trim().length === 0;
-}
-
 export function isClinicUrlConfigured(url: string): boolean {
-  return !isPlaceholder(url) && /^https?:\/\//i.test(url);
+  return isConfiguredUrl(url);
 }
 
 export function getMapEmbedSrc(): string | null {

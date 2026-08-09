@@ -1,0 +1,55 @@
+/**
+ * Central contact & booking configuration — edit here before launch.
+ * Used by all booking/contact CTAs, tel/mailto links, and WhatsApp actions.
+ */
+export const contactConfig = {
+  phone: "[Clinic phone]",
+  email: "[Clinic email]",
+  whatsapp: "[Clinic WhatsApp]",
+  /** E.164-style digits only, e.g. "971501234567" — enables wa.me links when set. */
+  whatsappNumber: null as string | null,
+  bookingUrl: "[Booking URL]",
+} as const;
+
+export type ContactConfig = typeof contactConfig;
+
+export const CONTACT_SECTION_ID = "contact";
+
+export function isPlaceholder(value: string): boolean {
+  return value.includes("[") || value.trim().length === 0;
+}
+
+export function isConfiguredUrl(url: string): boolean {
+  return !isPlaceholder(url) && /^https?:\/\//i.test(url);
+}
+
+export function isBookingUrlConfigured(): boolean {
+  return isConfiguredUrl(contactConfig.bookingUrl);
+}
+
+export function getBookingHref(): string | null {
+  return isBookingUrlConfigured() ? contactConfig.bookingUrl : null;
+}
+
+export function getTelHref(): string | null {
+  const { phone } = contactConfig;
+  if (isPlaceholder(phone)) return null;
+  const normalized = phone.replace(/[^\d+]/g, "");
+  if (normalized.replace(/\D/g, "").length < 8) return null;
+  return `tel:${normalized}`;
+}
+
+export function getMailtoHref(): string | null {
+  const { email } = contactConfig;
+  if (isPlaceholder(email)) return null;
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return null;
+  return `mailto:${email}`;
+}
+
+export function getWhatsAppHref(): string | null {
+  const { whatsappNumber } = contactConfig;
+  if (!whatsappNumber || isPlaceholder(whatsappNumber)) return null;
+  const digits = whatsappNumber.replace(/\D/g, "");
+  if (digits.length < 8) return null;
+  return `https://wa.me/${digits}`;
+}

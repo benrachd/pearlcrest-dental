@@ -4,6 +4,7 @@ import { motion, useMotionTemplate, useScroll, useTransform } from "framer-motio
 import { useTranslations } from "next-intl";
 import { duration, easing } from "@/animations/transitions";
 import { MagneticWrap } from "@/components/common/magnetic-wrap";
+import { BookingCtaLink } from "@/components/common/contact-links";
 import { ROUTES } from "@/constants/routes";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/utils/cn";
@@ -77,8 +78,7 @@ export function Navbar() {
         </Link>
 
         <MagneticWrap strength={0.12}>
-          <Link
-            href={ROUTES.CONSULTATION}
+          <BookingCtaLink
             data-cursor="interactive"
             className={cn(
               "group relative inline-flex h-8 shrink-0 items-center justify-center overflow-hidden rounded-full px-3.5",
@@ -101,7 +101,7 @@ export function Navbar() {
               className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-1000 ease-luxury group-hover:translate-x-full"
             />
             <span className="relative">{t("cta")}</span>
-          </Link>
+          </BookingCtaLink>
         </MagneticWrap>
       </motion.nav>
     </motion.header>
