@@ -18,17 +18,18 @@ export function HeroHeadline() {
   const subheadlineDelay = emphasisStart + emphasisWords * WORD_STAGGER + 0.35;
 
   return (
-    <div className="flex w-full min-w-0 max-w-full flex-col gap-5 max-md:max-w-[17.75rem] md:max-w-3xl md:gap-8 lg:gap-10">
+    <div className="flex w-full min-w-0 max-w-full flex-col gap-5 md:max-w-3xl md:gap-8 lg:gap-10">
       <motion.p
         variants={labelReveal}
         initial="hidden"
         animate="visible"
         custom={0.75}
-        className="text-caption text-gold-300/80 rtl:tracking-normal max-w-full uppercase tracking-[0.22em] md:tracking-[0.32em]"
+        className="text-caption text-gold-300/80 rtl:tracking-normal max-w-full uppercase tracking-[0.22em] max-md:whitespace-nowrap max-md:text-[0.53125rem] max-md:leading-[1.45] max-md:tracking-[0.05em] md:tracking-[0.32em]"
       >
         {t("eyebrow")}
       </motion.p>
 
+      <div className="flex w-full min-w-0 flex-col gap-5 max-md:max-w-[16.5rem] md:gap-8 lg:gap-10">
       <h1
         aria-label={t("headlineAria")}
         className="font-body w-full min-w-0 max-w-[calc(100vw-3rem)] md:max-w-none -ms-[0.02em] font-light leading-[1.04] tracking-[-0.035em] text-neutral-50 text-[clamp(1.9375rem,5.2vw+0.88rem,2.5rem)] md:text-display-xl lg:text-[clamp(3.5rem,7.2vw,6.25rem)] md:leading-[0.98] md:tracking-[-0.04em]"
@@ -48,10 +49,11 @@ export function HeroHeadline() {
         initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         transition={{ duration: 1.2, ease: easing.luxury, delay: subheadlineDelay }}
-        className="text-body-md text-neutral-200/75 max-w-[26ch] leading-[1.65] tracking-[0.015em] max-md:translate-y-0.5 md:max-w-[34ch] md:text-body-lg md:leading-[1.75] lg:text-body-xl lg:max-w-[38ch]"
+        className="text-body-md text-neutral-200/75 max-w-[23ch] leading-[1.65] tracking-[0.015em] max-md:translate-y-0.5 md:max-w-[34ch] md:text-body-lg md:leading-[1.75] lg:text-body-xl lg:max-w-[38ch]"
       >
         {t("subheadline")}
       </motion.p>
+      </div>
     </div>
   );
 }

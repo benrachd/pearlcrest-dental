@@ -108,7 +108,7 @@ export function HeroBackground({ imageAlt, dissolveStyle }: HeroBackgroundProps)
           className="absolute inset-0"
           style={reduceMotion ? undefined : { y: scrollParallaxY }}
         >
-          <div className="absolute inset-0 origin-[68%_36%] scale-[1.12]">
+          <div className="absolute inset-0 origin-[68%_36%] scale-[1.05]">
             <Image
               src={HERO_IMAGE_MOBILE}
               alt=""
@@ -132,7 +132,7 @@ export function HeroBackground({ imageAlt, dissolveStyle }: HeroBackgroundProps)
                 }
           }
         >
-          <div className="absolute inset-0 origin-[68%_36%] scale-[1.12]">
+          <div className="absolute inset-0 origin-[68%_36%] scale-[1.05]">
             <Image
               src={HERO_IMAGE_MOBILE}
               alt={imageAlt}
@@ -258,6 +258,10 @@ export function HeroBackground({ imageAlt, dissolveStyle }: HeroBackgroundProps)
       <LightLeaks active={!reduceMotion} />
       <HeroDustParticles />
 
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 max-md:bg-[radial-gradient(ellipse_72%_52%_at_24%_58%,rgba(8,6,5,0.16),transparent_70%)]"
+      />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_88%_78%_at_50%_38%,transparent_22%,rgba(8,6,5,0.72)_100%)] max-md:opacity-35"
