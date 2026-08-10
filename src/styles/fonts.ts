@@ -1,7 +1,7 @@
 import { IBM_Plex_Sans_Arabic, Inter, Noto_Naskh_Arabic, Playfair_Display } from "next/font/google";
 
 /**
- * Font configuration for Aurea Dental.
+ * Font configuration for Pearlcrest Dental Clinic.
  *
  * Two typographic roles are defined — `heading` (editorial, luxury display
  * type) and `body` (highly legible UI/reading type) — and each role has one

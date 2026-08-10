@@ -1,1 +1,1 @@
-export { VisitAurea } from "@/components/sections/visit/visit-aurea";
+export { VisitPearlcrest } from "@/components/sections/visit/visit-aurea";

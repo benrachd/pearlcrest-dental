@@ -15,7 +15,7 @@ import { useLockBodyScroll } from "@/hooks/use-lock-body-scroll";
 import { submitBookingInquiry, type BookingInquiryPayload } from "@/lib/submit-booking-inquiry";
 import { cn } from "@/utils/cn";
 
-const SERVICE_KEYS = ["smileAesthetics", "veneers", "implants", "whitening", "general"] as const;
+const SERVICE_KEYS = ["whitening", "rootCanal", "veneers", "general", "consultation"] as const;
 
 type ServiceKey = (typeof SERVICE_KEYS)[number];
 

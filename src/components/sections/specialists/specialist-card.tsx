@@ -43,7 +43,9 @@ export function SpecialistCard({
       <div className="relative z-10 flex flex-col gap-4 p-8 sm:p-10">
         <p className="text-caption text-gold-700 rtl:tracking-normal uppercase tracking-[0.2em]">{role}</p>
         <h3 className="font-body text-heading-xl sm:text-display-sm tracking-tight text-neutral-950">{name}</h3>
-        <p className="text-body-md text-foreground-muted max-w-[42ch] leading-[1.75]">{bio}</p>
+        {bio ? (
+          <p className="text-body-md text-foreground-muted max-w-[42ch] leading-[1.75]">{bio}</p>
+        ) : null}
       </div>
     </LuxuryCard>
   );

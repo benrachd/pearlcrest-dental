@@ -187,8 +187,8 @@ export function ComparisonSlider({
   ];
 
   return (
-    <article className="box-border flex w-full min-w-0 max-w-full flex-col gap-10 overflow-visible lg:gap-12">
-      <h3 className="font-body box-border min-w-0 max-w-full break-words text-heading-xl tracking-tight text-neutral-950 sm:text-display-sm rtl:text-start">
+    <article className="box-border flex w-full min-w-0 max-w-full flex-col gap-8 overflow-hidden sm:gap-10 lg:gap-12">
+      <h3 className="font-body box-border min-w-0 max-w-full break-words px-0 text-heading-xl tracking-tight text-neutral-950 sm:text-display-sm rtl:text-start [overflow-wrap:anywhere]">
         {title}
       </h3>
 
@@ -244,12 +244,7 @@ export function ComparisonSlider({
           />
         )}
 
-        <div
-          className={cn(
-            "absolute inset-0 max-w-full transition-transform duration-[1400ms] ease-luxury",
-            isHovering && !isDragging && isReady && "scale-[1.03]",
-          )}
-        >
+        <div className="absolute inset-0 max-w-full">
           <Image
             src={beforeSrc}
             alt={beforeAlt}
@@ -279,7 +274,7 @@ export function ComparisonSlider({
               initial={{ opacity: 0, x: -12 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-caption bg-neutral-950/45 text-neutral-50 rtl:tracking-normal pointer-events-none absolute end-3 top-3 max-w-[calc(50%-1.5rem)] rounded-full px-3 py-1.5 text-center uppercase tracking-[0.2em] backdrop-blur-md sm:end-5 sm:top-5 sm:px-4"
+              className="text-caption bg-neutral-950/45 text-neutral-50 pointer-events-none absolute end-2 top-2 max-w-[calc(50%-0.75rem)] rounded-full px-2.5 py-1 text-center uppercase tracking-[0.12em] backdrop-blur-md sm:end-5 sm:top-5 sm:max-w-[calc(50%-1.5rem)] sm:px-4 sm:tracking-[0.2em] [overflow-wrap:anywhere] rtl:tracking-normal"
             >
               {beforeLabel}
             </motion.span>
@@ -287,7 +282,7 @@ export function ComparisonSlider({
               initial={{ opacity: 0, x: 12 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.65, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-caption bg-gold-600/80 text-neutral-50 rtl:tracking-normal pointer-events-none absolute start-3 top-3 max-w-[calc(50%-1.5rem)] rounded-full px-3 py-1.5 text-center uppercase tracking-[0.2em] backdrop-blur-md sm:start-5 sm:top-5 sm:px-4"
+              className="text-caption bg-gold-600/80 text-neutral-50 pointer-events-none absolute start-2 top-2 max-w-[calc(50%-0.75rem)] rounded-full px-2.5 py-1 text-center uppercase tracking-[0.12em] backdrop-blur-md sm:start-5 sm:top-5 sm:max-w-[calc(50%-1.5rem)] sm:px-4 sm:tracking-[0.2em] [overflow-wrap:anywhere] rtl:tracking-normal"
             >
               {afterLabel}
             </motion.span>
@@ -321,7 +316,7 @@ export function ComparisonSlider({
 
       <dl
         dir={isRtl ? "rtl" : "ltr"}
-        className="border-border box-border grid w-full min-w-0 max-w-full grid-cols-[repeat(2,minmax(0,1fr))] gap-x-3 gap-y-6 border-t px-1 pt-8 text-start max-[359px]:grid-cols-1 sm:grid-cols-[repeat(4,minmax(0,1fr))] sm:gap-x-6 sm:gap-y-7 sm:px-0 sm:pt-10 lg:gap-x-8"
+        className="border-border box-border grid w-full min-w-0 max-w-full grid-cols-[repeat(2,minmax(0,1fr))] gap-x-2 gap-y-5 border-t px-0 pt-6 text-start max-[359px]:grid-cols-1 sm:grid-cols-[repeat(4,minmax(0,1fr))] sm:gap-x-4 sm:gap-y-6 sm:pt-8 lg:gap-x-6 lg:pt-10"
       >
         {metadata.map((item) => (
           <div key={item.label} className="box-border flex min-w-0 max-w-full flex-col gap-1.5 overflow-visible sm:gap-2">

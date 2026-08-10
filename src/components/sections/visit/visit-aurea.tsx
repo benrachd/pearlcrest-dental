@@ -1,6 +1,6 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { AnimatedSectionHeader } from "@/components/common/animated-section-header";
 import { RichTitleEmphasis } from "@/components/common/rich-title-emphasis";
 import { ArrowRightGlyph } from "@/components/sections/hero/hero-icons";
@@ -9,29 +9,31 @@ import {
   getGoogleMapsLink,
   getMapEmbedSrc,
 } from "@/constants/clinic-config";
+import { getWhatsAppHref } from "@/constants/contact-config";
 import { cardOnSurface, sectionContentGap, sectionShell } from "@/constants/surface-classes";
 import { cn } from "@/utils/cn";
 
-function ContactRow({ label, value }: { label: string; value: string }) {
+function ContactRow({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="flex flex-col gap-2 border-t border-gold-500/15 pt-6 first:border-t-0 first:pt-0">
+    <div className="flex min-w-0 max-w-full flex-col gap-2 border-t border-gold-500/15 pt-6 first:border-t-0 first:pt-0">
       <dt className="text-caption text-gold-700 rtl:tracking-normal uppercase tracking-[0.2em]">{label}</dt>
-      <dd className="text-body-md text-foreground leading-[1.75] tracking-[0.01em]">{value}</dd>
+      <dd className="text-body-md text-foreground min-w-0 max-w-full break-words leading-[1.75] tracking-[0.01em] [overflow-wrap:anywhere]">
+        {children}
+      </dd>
     </div>
   );
 }
 
-export function VisitAurea() {
-  const t = useTranslations("VisitAurea");
-  const locale = useLocale();
-  const isArabic = locale === "ar";
+export function VisitPearlcrest() {
+  const t = useTranslations("VisitPearlcrest");
   const mapEmbedSrc = getMapEmbedSrc();
   const mapsLink = getGoogleMapsLink();
+  const whatsappHref = getWhatsAppHref();
 
   return (
     <section
-      id="visit-aurea"
-      aria-labelledby="visit-aurea-heading"
+      id="visit-pearlcrest"
+      aria-labelledby="visit-pearlcrest-heading"
       className="bg-surface relative overflow-hidden"
     >
       <div
@@ -41,7 +43,7 @@ export function VisitAurea() {
 
       <div className={`${sectionShell} relative`}>
         <AnimatedSectionHeader
-          id="visit-aurea-heading"
+          id="visit-pearlcrest-heading"
           eyebrow={t("eyebrow")}
           title={t.rich("title", { em: (chunks) => <RichTitleEmphasis>{chunks}</RichTitleEmphasis> })}
           intro={t("intro")}
@@ -53,24 +55,59 @@ export function VisitAurea() {
             "grid grid-cols-1 items-stretch gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16",
           )}
         >
-          <div className={cn(cardOnSurface, "flex flex-col gap-8 p-8 sm:p-10 lg:p-12")}>
-            <div className="flex flex-col gap-3">
+          <div className={cn(cardOnSurface, "flex min-w-0 max-w-full flex-col gap-8 p-8 sm:p-10 lg:p-12")}>
+            <div className="flex min-w-0 flex-col gap-3">
               <p className="text-caption text-gold-700 rtl:tracking-normal uppercase tracking-[0.2em]">
                 {t("locationsLabel")}
               </p>
-              <p className="text-body-lg text-foreground leading-[1.75] tracking-[0.01em]">{t("locations")}</p>
+              <p className="text-body-lg text-foreground break-words leading-[1.75] tracking-[0.01em]">{t("locations")}</p>
             </div>
 
-            <dl className="flex flex-col gap-6">
-              <ContactRow label={t("addressLabel")} value={isArabic ? t("addressValue") : clinicConfig.address} />
-              <ContactRow label={t("phoneLabel")} value={isArabic ? t("phoneValue") : clinicConfig.phone} />
-              <ContactRow label={t("emailLabel")} value={clinicConfig.email} />
-              <ContactRow label={t("whatsappLabel")} value={isArabic ? t("whatsappValue") : clinicConfig.whatsapp} />
-              <ContactRow label={t("hoursLabel")} value={isArabic ? t("hoursValue") : clinicConfig.openingHours} />
+            <dl className="flex min-w-0 max-w-full flex-col gap-6">
+              <ContactRow label={t("addressLabel")}>{clinicConfig.address}</ContactRow>
+              <ContactRow label={t("phoneLabel")}>
+                <ul className="flex min-w-0 flex-col gap-2">
+                  {clinicConfig.phones.map((phone) => (
+                    <li key={phone.tel}>
+                      <a
+                        href={`tel:${phone.tel}`}
+                        className="transition-colors duration-700 hover:text-gold-700"
+                        data-cursor="interactive"
+                      >
+                        {phone.display}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </ContactRow>
+              <ContactRow label={t("emailLabel")}>
+                <a
+                  href={`mailto:${clinicConfig.email}`}
+                  className="transition-colors duration-700 hover:text-gold-700"
+                  data-cursor="interactive"
+                >
+                  {clinicConfig.email}
+                </a>
+              </ContactRow>
+              <ContactRow label={t("whatsappLabel")}>
+                {whatsappHref ? (
+                  <a
+                    href={whatsappHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors duration-700 hover:text-gold-700"
+                    data-cursor="interactive"
+                  >
+                    +971 52 851 6434
+                  </a>
+                ) : (
+                  "+971 52 851 6434"
+                )}
+              </ContactRow>
             </dl>
           </div>
 
-          <div className="flex min-w-0 flex-col gap-6">
+          <div className="flex min-w-0 max-w-full flex-col gap-6">
             <div
               className={cn(
                 cardOnSurface,
@@ -105,13 +142,13 @@ export function VisitAurea() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor="interactive"
-                className="text-body-sm text-gold-700 hover:text-gold-600 ease-luxury group inline-flex w-fit items-center gap-2 font-medium tracking-[0.04em] transition-colors duration-700"
+                className="text-body-sm text-gold-700 hover:text-gold-600 ease-luxury group inline-flex w-fit max-w-full items-center gap-2 font-medium tracking-[0.04em] transition-colors duration-700"
                 aria-label={t("openMapsAria")}
               >
                 {t("openMaps")}
                 <ArrowRightGlyph
                   aria-hidden="true"
-                  className="size-4 transition-transform duration-700 group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1"
+                  className="size-4 shrink-0 transition-transform duration-700 group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1"
                 />
               </a>
             ) : (
@@ -123,3 +160,5 @@ export function VisitAurea() {
     </section>
   );
 }
+
+/** @deprecated Use VisitPearlcrest */

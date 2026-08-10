@@ -11,10 +11,10 @@ import { gridGap, sectionContentGap, sectionShell } from "@/constants/surface-cl
 import { ROUTES } from "@/constants/routes";
 
 const SERVICES = [
-  { key: "smileDesign", imageSrc: "/images/services/service-smile-design-v2.png" },
-  { key: "implants", imageSrc: "/images/services/service-dental-implants-v2.png" },
-  { key: "cosmetic", imageSrc: "/images/services/service-cosmetic-dentistry-v2.png" },
-  { key: "vipCare", imageSrc: "/images/services/service-vip-care-v2.png" },
+  { key: "whitening", imageSrc: "/images/services/service-cosmetic-dentistry-v2.png" },
+  { key: "rootCanal", imageSrc: "/images/services/service-dental-implants-v2.png" },
+  { key: "veneers", imageSrc: "/images/services/service-smile-design-v2.png" },
+  { key: "generalCare", imageSrc: "/images/services/service-vip-care-v2.png" },
 ] as const;
 
 export function Services() {

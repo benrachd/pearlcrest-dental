@@ -2,22 +2,16 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { useLocale, useTranslations } from "next-intl";
-import {
-  FacebookIcon,
-  InstagramIcon,
-  LinkedInIcon,
-  WhatsAppIcon,
-} from "@/components/layout/footer-icons";
+import { useTranslations } from "next-intl";
+import { WhatsAppIcon } from "@/components/layout/footer-icons";
 import { ContactDetailText, ConciergeCtaLink } from "@/components/common/contact-links";
 import { cinematicStagger, sectionReveal } from "@/animations/variants";
 import { viewportHeader } from "@/animations/viewport";
 import { ROUTES } from "@/constants/routes";
-import { contactConfig, getMailtoHref, getTelHref } from "@/constants/contact-config";
+import { clinicConfig } from "@/constants/clinic-config";
+import { contactConfig, getMailtoHref } from "@/constants/contact-config";
 import { Link } from "@/i18n/navigation";
 import { handleHashLinkClick } from "@/utils/scroll-to-section";
-
-const LOCATIONS = ["dubai", "abuDhabi", "riyadh", "doha"] as const;
 
 const FOOTER_NAV = [
   { labelKey: "linkHome", href: ROUTES.HOME },
@@ -25,12 +19,6 @@ const FOOTER_NAV = [
   { labelKey: "linkAbout", href: ROUTES.ABOUT },
   { labelKey: "linkDoctors", href: "/#specialists-heading" },
   { labelKey: "linkContact", href: ROUTES.CONTACT },
-] as const;
-
-const SOCIAL_LINKS = [
-  { labelKey: "socialInstagram", href: "https://instagram.com/aureadental", icon: InstagramIcon },
-  { labelKey: "socialLinkedIn", href: "https://linkedin.com/company/aureadental", icon: LinkedInIcon },
-  { labelKey: "socialFacebook", href: "https://facebook.com/aureadental", icon: FacebookIcon },
 ] as const;
 
 const contactDetailClass =
@@ -68,8 +56,6 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
 
 export function Footer() {
   const t = useTranslations("Footer");
-  const locale = useLocale();
-  const isArabic = locale === "ar";
   const year = new Date().getFullYear();
   const footerRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -103,8 +89,8 @@ export function Footer() {
             data-cursor="interactive"
             className="ease-luxury inline-flex flex-col gap-3.5 transition-opacity duration-700 hover:opacity-55"
           >
-            <span className="font-heading text-foreground text-4xl font-medium tracking-[0.2em] sm:text-[2.75rem] sm:leading-[1.05]">
-              AUREA
+            <span className="font-heading text-foreground text-3xl font-medium tracking-[0.16em] sm:text-[2.25rem] sm:leading-[1.05]">
+              PEARLCREST
             </span>
             <span className="text-caption text-foreground-muted tracking-[0.38em]">DENTAL</span>
           </Link>
@@ -119,11 +105,9 @@ export function Footer() {
               {t("locationsHeading")}
             </p>
             <ul className="flex flex-col gap-4">
-              {LOCATIONS.map((key) => (
-                <li key={key} className="text-body-sm text-foreground-muted leading-[1.7] tracking-[0.01em]">
-                  {t(`location_${key}`)}
-                </li>
-              ))}
+              <li className="text-body-sm text-foreground-muted leading-[1.7] tracking-[0.01em]">
+                {t("location_dubai")}
+              </li>
             </ul>
           </motion.div>
 
@@ -140,11 +124,11 @@ export function Footer() {
             </ul>
           </motion.nav>
 
-          <motion.div variants={sectionReveal} custom={0.15} className="flex flex-col gap-6">
+          <motion.div variants={sectionReveal} custom={0.15} className="flex min-w-0 flex-col gap-6">
             <p className="text-caption text-gold-700 rtl:tracking-normal uppercase tracking-[0.2em]">
               {t("contactHeading")}
             </p>
-            <ul className="flex flex-col gap-4">
+            <ul className="flex min-w-0 flex-col gap-4">
               <li>
                 <ContactDetailText
                   value={contactConfig.email}
@@ -152,20 +136,18 @@ export function Footer() {
                   className={contactDetailClass}
                 />
               </li>
-              <li>
-                <ContactDetailText
-                  value={isArabic ? t("contactPhoneDisplay") : contactConfig.phone}
-                  href={getTelHref()}
-                  className={contactDetailClass}
-                />
-              </li>
+              {contactConfig.phones.map((phone) => (
+                <li key={phone.tel}>
+                  <ContactDetailText value={phone.display} href={`tel:${phone.tel}`} className={contactDetailClass} />
+                </li>
+              ))}
               <li>
                 <ConciergeCtaLink
                   data-cursor="interactive"
-                  className="text-body-sm text-foreground-muted ease-luxury inline-flex items-center gap-2 transition-colors duration-700 hover:text-foreground"
+                  className="text-body-sm text-foreground-muted ease-luxury inline-flex min-w-0 max-w-full items-center gap-2 transition-colors duration-700 hover:text-foreground"
                 >
-                  <WhatsAppIcon className="size-4" />
-                  {isArabic ? t("contactWhatsAppDisplay") : contactConfig.whatsapp}
+                  <WhatsAppIcon className="size-4 shrink-0" />
+                  <span className="min-w-0 break-words">+971 52 851 6434</span>
                 </ConciergeCtaLink>
               </li>
             </ul>
@@ -173,23 +155,18 @@ export function Footer() {
 
           <motion.div variants={sectionReveal} custom={0.2} className="flex flex-col gap-6">
             <p className="text-caption text-gold-700 rtl:tracking-normal uppercase tracking-[0.2em]">
-              {t("socialHeading")}
+              {t("websiteLabel")}
             </p>
-            <div className="flex items-center gap-3">
-              {SOCIAL_LINKS.map(({ labelKey, href, icon: Icon }) => (
-                <a
-                  key={labelKey}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={t(labelKey)}
-                  data-cursor="interactive"
-                  className="border-gold-500/20 bg-surface/40 text-foreground-muted ease-luxury flex size-12 items-center justify-center rounded-full border backdrop-blur-sm transition-[color,background-color,transform,box-shadow,border-color] duration-700 hover:-translate-y-1 hover:border-gold-500/40 hover:bg-gold-50/90 hover:text-gold-700 hover:shadow-[0_8px_28px_rgba(198,169,98,0.18)]"
-                >
-                  <Icon className="size-4 transition-transform duration-700 group-hover:scale-110" />
-                </a>
-              ))}
-            </div>
+            <a
+              href={clinicConfig.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t("websiteAria")}
+              data-cursor="interactive"
+              className="text-body-sm text-foreground-muted ease-luxury inline-flex w-fit transition-colors duration-700 hover:text-foreground"
+            >
+              pearlcrest.ae
+            </a>
           </motion.div>
         </div>
 

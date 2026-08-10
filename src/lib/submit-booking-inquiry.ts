@@ -19,7 +19,7 @@ export async function submitBookingInquiry(payload: BookingInquiryPayload): Prom
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify({
         ...payload,
-        source: "aurea-dental-booking-modal",
+        source: "pearlcrest-dental-booking-modal",
       }),
     });
 

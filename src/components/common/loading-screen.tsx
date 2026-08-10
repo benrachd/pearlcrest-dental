@@ -6,7 +6,7 @@ import { easing } from "@/animations/transitions";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 /**
- * Cinematic intro — white canvas, AUREA fade, gold line draw, 1.5s exit.
+ * Cinematic intro — white canvas, brand fade, gold line draw, 1.5s exit.
  */
 export function LoadingScreen() {
   const reduceMotion = useReducedMotion();
@@ -47,7 +47,7 @@ export function LoadingScreen() {
               transition={{ duration: 0.7, ease: easing.luxury, delay: 0.1 }}
               className="font-heading text-foreground text-3xl font-medium tracking-[0.24em] sm:text-4xl"
             >
-              AUREA
+              PEARLCREST
             </motion.span>
             <motion.span
               initial={{ scaleX: 0 }}

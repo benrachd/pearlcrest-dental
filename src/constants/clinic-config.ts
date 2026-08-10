@@ -15,23 +15,17 @@ export {
 } from "@/constants/contact-config";
 
 /**
- * Central clinic configuration — replace placeholders before production launch.
- * Contact/booking fields live in `contactConfig`; location & map fields here.
+ * Pearlcrest Dental Clinic — Hor Al Anz East, Dubai.
  */
 export const clinicConfig = {
   ...contactConfig,
-  address: "Private consultations · Dubai · Abu Dhabi · Riyadh · Doha",
-  openingHours: "Monday – Friday · by appointment",
-  /** Set when the client provides coordinates (e.g. 25.2048). */
+  address: "Office 102, Dar Al Nahda Building, Hor Al Anz East, Dubai, UAE",
+  locationLabel: "Dubai · Hor Al Anz East · UAE",
+  website: "https://pearlcrest.ae",
   latitude: null as number | null,
-  /** Set when the client provides coordinates (e.g. 55.2708). */
   longitude: null as number | null,
-  /** Full Google Maps link — used by “Open in Google Maps”. */
-  googleMapsUrl: "[Google Maps URL]",
-  /**
-   * Optional iframe embed URL (from Google Maps → Share → Embed a map).
-   * Used when latitude/longitude are not set.
-   */
+  googleMapsUrl:
+    "https://www.google.com/maps/search/?api=1&query=Office+102,+Dar+Al+Nahda+Building,+Hor+Al+Anz+East,+Dubai,+UAE",
   googleMapsEmbedUrl: "" as string,
 } as const;
 

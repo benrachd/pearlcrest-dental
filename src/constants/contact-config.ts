@@ -1,13 +1,20 @@
 /**
- * Central contact & booking configuration — edit here before launch.
+ * Central contact & booking configuration — Pearlcrest Dental Clinic, Dubai.
  * Used by all booking/contact CTAs, tel/mailto links, and WhatsApp actions.
  */
 export const contactConfig = {
-  phone: "By private appointment",
-  email: "contact@aureadental.com",
-  whatsapp: "WhatsApp concierge",
-  /** E.164-style digits only, e.g. "971501234567" — enables wa.me links when set. */
-  whatsappNumber: null as string | null,
+  email: "hr@pearlcrest.ae",
+  /** Primary line shown in compact UI surfaces. */
+  phone: "04 272 6416",
+  whatsapp: "WhatsApp",
+  /** E.164 digits only — +971 52 851 6434 */
+  whatsappNumber: "971528516434",
+  phones: [
+    { display: "04 272 6416", tel: "+97142726416" },
+    { display: "04 273 0763", tel: "+97142730763" },
+    { display: "052 851 6434", tel: "+971528516434" },
+    { display: "055 214 8499", tel: "+971552148499" },
+  ] as const,
   bookingUrl: "[Booking URL]",
   /** Optional inquiry API (Formspree, custom backend). Leave empty for demo confirmation. */
   inquiryEndpoint: "" as string,
@@ -45,12 +52,11 @@ export function getWhatsAppHrefWithText(text?: string): string | null {
   return `${base}${separator}text=${encodeURIComponent(text)}`;
 }
 
-export function getTelHref(): string | null {
-  const { phone } = contactConfig;
+export function getTelHref(phone = contactConfig.phone): string | null {
   if (isPlaceholder(phone)) return null;
   const normalized = phone.replace(/[^\d+]/g, "");
   if (normalized.replace(/\D/g, "").length < 8) return null;
-  return `tel:${normalized}`;
+  return `tel:${normalized.startsWith("+") ? normalized : normalized}`;
 }
 
 export function getMailtoHref(): string | null {

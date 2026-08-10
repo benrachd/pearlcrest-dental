@@ -1,8 +1,8 @@
 {
-  "name": "aurea-dental",
+  "name": "pearlcrest-dental",
   "version": "0.1.0",
   "private": true,
-  "description": "Aurea Dental — a flagship luxury dental brand website for the UAE, Saudi Arabia, United States and France.",
+  "description": "Pearlcrest Dental Clinic — premium dental website for Dubai, UAE.",
   "engines": {
     "node": ">=20.0.0"
   },

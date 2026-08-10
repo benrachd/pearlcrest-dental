@@ -13,14 +13,14 @@ const STORIES = [
   { key: "results", imageSrc: "/images/why-aurea/why-timeless-results.png" },
 ] as const;
 
-export function WhyAurea() {
-  const t = useTranslations("WhyAurea");
+export function WhyPearlcrest() {
+  const t = useTranslations("WhyPearlcrest");
 
   return (
-    <section aria-labelledby="why-aurea-heading" className="bg-background relative">
+    <section aria-labelledby="why-pearlcrest-heading" className="bg-background relative">
       <div className={sectionShell}>
         <AnimatedSectionHeader
-          id="why-aurea-heading"
+          id="why-pearlcrest-heading"
           eyebrow={t("eyebrow")}
           title={t.rich("title", { em: (chunks) => <RichTitleEmphasis>{chunks}</RichTitleEmphasis> })}
         />

@@ -7,10 +7,9 @@ import { Hero } from "@/components/sections/hero";
 import { Journey } from "@/components/sections/journey";
 import { Services } from "@/components/sections/services";
 import { Specialists } from "@/components/sections/specialists";
-import { Testimonials } from "@/components/sections/testimonials";
 import { Trust } from "@/components/sections/trust";
-import { VisitAurea } from "@/components/sections/visit";
-import { WhyAurea } from "@/components/sections/why-aurea";
+import { VisitPearlcrest } from "@/components/sections/visit";
+import { WhyPearlcrest } from "@/components/sections/why-aurea";
 import { WowMoment } from "@/components/sections/wow";
 import { buildMetadata } from "@/lib/metadata";
 import type { Locale } from "@/types/i18n";
@@ -33,18 +32,17 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
 
 export default function HomePage() {
   return (
-    <main>
+    <main className="overflow-x-clip">
       <Hero />
       <WowMoment />
       <Services />
       <Trust />
-      <WhyAurea />
+      <WhyPearlcrest />
       <Gallery />
       <Journey />
-      <Testimonials />
       <Specialists />
       <Faq />
-      <VisitAurea />
+      <VisitPearlcrest />
       <ContactCta />
     </main>
   );

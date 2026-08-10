@@ -1,40 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { RichTitleEmphasis } from "@/components/common/rich-title-emphasis";
 import { cinematicStagger, sectionReveal } from "@/animations/variants";
 import { viewportContent } from "@/animations/viewport";
 import { sectionShell } from "@/constants/surface-classes";
 
-const STATS = [
-  { key: "years", value: 18, suffix: "+" },
-  { key: "treatments", value: 2500, suffix: "+" },
-  { key: "digital", value: 100, suffix: "%" },
-  { key: "destinations", value: 4, suffix: "" },
-] as const;
-
-function formatStatValue(
-  stat: (typeof STATS)[number],
-  locale: string,
-): string {
-  if (stat.key === "digital") {
-    return `${stat.value}${stat.suffix}`;
-  }
-
-  if (stat.key === "destinations") {
-    return String(stat.value);
-  }
-
-  const formatted =
-    stat.value >= 1000 ? stat.value.toLocaleString(locale) : String(stat.value);
-
-  return `${formatted}${stat.suffix}`;
-}
+const PILLARS = ["care", "comfort", "precision", "team"] as const;
 
 export function Trust() {
   const t = useTranslations("Trust");
-  const locale = useLocale();
 
   return (
     <section aria-labelledby="trust-heading" className="bg-neutral-950 relative overflow-hidden">
@@ -74,20 +50,20 @@ export function Trust() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportContent}
-          className="mt-16 grid grid-cols-2 gap-x-6 gap-y-12 sm:gap-10 lg:mt-28 lg:grid-cols-4 lg:gap-8"
+          className="mt-16 grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 sm:gap-10 lg:mt-28 lg:grid-cols-4 lg:gap-8"
         >
-          {STATS.map((stat, index) => (
+          {PILLARS.map((pillar, index) => (
             <motion.li
-              key={stat.key}
+              key={pillar}
               variants={sectionReveal}
               custom={index * 0.08}
-              className="border-gold-500/15 flex flex-col gap-3 border-t pt-8 sm:gap-4 sm:pt-10"
+              className="border-gold-500/15 box-border flex min-w-0 max-w-full flex-col gap-3 border-t pt-8 sm:gap-4 sm:pt-10"
             >
-              <p className="font-heading text-display-sm sm:text-display-md tracking-[-0.02em] text-gold-300/95 tabular-nums">
-                {formatStatValue(stat, locale)}
+              <p className="font-body text-heading-lg sm:text-heading-xl min-w-0 max-w-full break-words tracking-tight text-gold-300/95 [overflow-wrap:anywhere]">
+                {t(`${pillar}Title`)}
               </p>
-              <p className="text-body-sm text-neutral-400 leading-[1.65] tracking-[0.02em] sm:text-body-md">
-                {t(`${stat.key}Label`)}
+              <p className="text-body-sm text-neutral-400 min-w-0 max-w-full break-words leading-[1.65] tracking-[0.02em] [overflow-wrap:anywhere] sm:text-body-md">
+                {t(`${pillar}Description`)}
               </p>
             </motion.li>
           ))}

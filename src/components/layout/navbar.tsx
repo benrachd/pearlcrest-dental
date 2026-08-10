@@ -64,7 +64,7 @@ export function Navbar() {
             style={{ color: logoPrimary, textShadow: logoShadow }}
             className="font-heading text-[0.9375rem] font-medium tracking-[0.16em] sm:text-lg sm:tracking-[0.2em] max-sm:rtl:text-[0.75rem] max-sm:rtl:tracking-[0.1em]"
           >
-            AUREA
+            PEARLCREST
           </motion.span>
           <motion.span
             style={{ color: logoSecondary, textShadow: logoShadow }}

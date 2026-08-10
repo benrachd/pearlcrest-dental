@@ -21,7 +21,7 @@ export function Gallery() {
   const t = useTranslations("Gallery");
 
   return (
-    <section aria-labelledby="gallery-heading" className="bg-surface relative overflow-hidden">
+    <section aria-labelledby="gallery-heading" className="bg-surface relative overflow-x-clip">
       <div
         aria-hidden="true"
         className="from-gold-100/20 via-gold-50/5 pointer-events-none absolute inset-0 bg-gradient-to-b to-transparent"
@@ -41,7 +41,7 @@ export function Gallery() {
           className="mx-auto max-w-3xl"
         />
 
-        <div className="mx-auto mt-28 box-border flex w-full min-w-0 max-w-5xl flex-col gap-36 lg:mt-36 lg:gap-48">
+        <div className="mx-auto mt-28 box-border flex w-full min-w-0 max-w-full flex-col gap-36 px-0 lg:mt-36 lg:max-w-5xl lg:gap-48">
           {CASES.map((item, index) => (
             <motion.div
               key={item.key}
