@@ -191,8 +191,8 @@ export function ComparisonSlider({
   ];
 
   return (
-    <article className="box-border flex w-full min-w-0 max-w-full flex-col gap-10 lg:gap-12">
-      <h3 className="font-body box-border min-w-0 max-w-full break-words text-heading-xl tracking-tight text-neutral-950 sm:text-display-sm rtl:text-end">
+    <article className="box-border flex w-full min-w-0 max-w-full flex-col gap-10 overflow-visible lg:gap-12">
+      <h3 className="font-body box-border min-w-0 max-w-full break-words text-heading-xl tracking-tight text-neutral-950 sm:text-display-sm rtl:text-start">
         {title}
       </h3>
 
@@ -322,10 +322,13 @@ export function ComparisonSlider({
         )}
       </motion.div>
 
-      <dl className="border-border box-border grid w-full min-w-0 max-w-full grid-cols-2 gap-x-3 gap-y-6 border-t pt-8 sm:grid-cols-4 sm:gap-x-8 sm:gap-y-7 sm:pt-10 lg:gap-x-10 rtl:text-end">
+      <dl
+        dir={isRtl ? "rtl" : "ltr"}
+        className="border-border box-border grid w-full min-w-0 max-w-full grid-cols-[repeat(2,minmax(0,1fr))] gap-x-3 gap-y-6 border-t px-1 pt-8 text-start max-[359px]:grid-cols-1 sm:grid-cols-[repeat(4,minmax(0,1fr))] sm:gap-x-6 sm:gap-y-7 sm:px-0 sm:pt-10 lg:gap-x-8"
+      >
         {metadata.map((item) => (
-          <div key={item.label} className="box-border flex min-w-0 max-w-full flex-col gap-1.5 sm:gap-2">
-            <dt className="text-caption text-foreground-muted max-w-full break-words uppercase tracking-[0.16em] rtl:tracking-normal">
+          <div key={item.label} className="box-border flex min-w-0 max-w-full flex-col gap-1.5 overflow-visible sm:gap-2">
+            <dt className="text-caption text-foreground-muted max-w-full min-w-0 break-words uppercase tracking-[0.16em] [overflow-wrap:anywhere] rtl:tracking-normal">
               {item.label}
             </dt>
             <dd className="font-body text-body-md max-w-full min-w-0 break-words font-medium leading-[1.65] text-neutral-950 [overflow-wrap:anywhere]">

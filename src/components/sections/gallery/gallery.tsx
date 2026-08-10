@@ -50,7 +50,7 @@ export function Gallery() {
               initial="hidden"
               whileInView="visible"
               viewport={viewportContent}
-              className={cn("box-border min-w-0 w-full max-w-full overflow-hidden", index === 0 && "relative")}
+              className={cn("box-border min-w-0 w-full max-w-full", index === 0 && "relative")}
               data-cursor="interactive"
             >
               {index === 0 && (
