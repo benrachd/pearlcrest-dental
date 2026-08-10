@@ -109,9 +109,7 @@ export function ComparisonSlider({
     position,
     isDragging ? { stiffness: 900, damping: 45, mass: 0.2 } : RELEASE_SPRING,
   );
-  const clipPath = useTransform(springPosition, (value) =>
-    isRtl ? `inset(0 0 0 ${value}%)` : `inset(0 ${100 - value}% 0 0)`,
-  );
+  const clipPath = useTransform(springPosition, (value) => `inset(0 ${100 - value}% 0 0)`);
   const handleLeft = useTransform(
     springPosition,
     (value) => `clamp(${SLIDER_EDGE_INSET}, ${value}%, calc(100% - ${SLIDER_EDGE_INSET}))`,
@@ -142,10 +140,8 @@ export function ComparisonSlider({
         lastMoveRef.current = { x: clientX, time: now };
       }
 
-      const isRtlContainer = getComputedStyle(containerRef.current!).direction === "rtl";
       const ratio = (clientX - rect.left) / rect.width;
-      const pct = isRtlContainer ? (1 - ratio) * 100 : ratio * 100;
-      position.set(Math.max(SLIDER_MIN, Math.min(SLIDER_MAX, pct)));
+      position.set(Math.max(SLIDER_MIN, Math.min(SLIDER_MAX, ratio * 100)));
     },
     [position],
   );
@@ -202,6 +198,7 @@ export function ComparisonSlider({
         viewport={{ once: true, amount: 0.2, margin: "0px 0px -32px 0px" }}
         transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
         ref={containerRef}
+        dir="ltr"
         role="slider"
         tabIndex={0}
         aria-label={sliderAriaLabel}
@@ -300,7 +297,7 @@ export function ComparisonSlider({
         {isReady && (
           <motion.div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-y-0 z-10 flex w-14 -translate-x-1/2 items-center justify-center will-change-[left] rtl:translate-x-1/2"
+            className="pointer-events-none absolute inset-y-0 z-10 flex w-14 -translate-x-1/2 items-center justify-center will-change-[left]"
             style={{ left: handleLeft }}
           >
             <span
