@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
@@ -40,6 +40,8 @@ export async function generateMetadata({
     notFound();
   }
 
+  setRequestLocale(locale);
+
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
   return buildMetadata({
@@ -64,6 +66,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   }
 
   const typedLocale = locale as Locale;
+  setRequestLocale(locale);
   const messages = await getMessages();
 
   return (

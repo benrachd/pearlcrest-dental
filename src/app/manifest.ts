@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/constants/site";
 
+export const dynamic = "force-static";
+
 /**
  * Generates `/manifest.webmanifest` at build time (PWA / "Add to Home
  * Screen" metadata). `icons` is intentionally empty until real app icons

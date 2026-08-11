@@ -3,6 +3,8 @@ import { siteConfig } from "@/constants/site";
 import { localizedPath } from "@/i18n/localized-path";
 import { routing } from "@/i18n/routing";
 
+export const dynamic = "force-static";
+
 /**
  * Generates `/sitemap.xml` at build time. One entry per locale home page,
  * each carrying `alternates.languages` so search engines understand the
