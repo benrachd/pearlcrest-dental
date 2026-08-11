@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+
+Host: https://benrachd.github.io/pearlcrest-dental
+Sitemap: https://benrachd.github.io/pearlcrest-dental/sitemap.xml
