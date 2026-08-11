@@ -17,16 +17,17 @@ export {
 /**
  * Pearlcrest Dental Clinic — Hor Al Anz East, Dubai.
  */
+const CLINIC_ADDRESS = "Office 102, Dar Al Nahda Building, Hor Al Anz East, Dubai, UAE";
+
 export const clinicConfig = {
   ...contactConfig,
-  address: "Office 102, Dar Al Nahda Building, Hor Al Anz East, Dubai, UAE",
+  address: CLINIC_ADDRESS,
   locationLabel: "Dubai · Hor Al Anz East · UAE",
   website: "https://pearlcrest.ae",
   latitude: null as number | null,
   longitude: null as number | null,
-  googleMapsUrl:
-    "https://www.google.com/maps/search/?api=1&query=Office+102,+Dar+Al+Nahda+Building,+Hor+Al+Anz+East,+Dubai,+UAE",
-  googleMapsEmbedUrl: "" as string,
+  googleMapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CLINIC_ADDRESS)}`,
+  googleMapsEmbedUrl: `https://maps.google.com/maps?q=${encodeURIComponent(CLINIC_ADDRESS)}&z=15&output=embed`,
 } as const;
 
 export type ClinicConfig = typeof clinicConfig;
@@ -35,8 +36,22 @@ export function isClinicUrlConfigured(url: string): boolean {
   return isConfiguredUrl(url);
 }
 
+function extractMapsQuery(url: string): string | null {
+  if (!isClinicUrlConfigured(url)) return null;
+
+  try {
+    const parsed = new URL(url);
+    const query = parsed.searchParams.get("query") ?? parsed.searchParams.get("q");
+    if (query?.trim()) return query.trim();
+  } catch {
+    return null;
+  }
+
+  return null;
+}
+
 export function getMapEmbedSrc(): string | null {
-  const { latitude, longitude, googleMapsEmbedUrl, googleMapsUrl } = clinicConfig;
+  const { latitude, longitude, googleMapsEmbedUrl, googleMapsUrl, address } = clinicConfig;
 
   if (latitude != null && longitude != null) {
     return `https://maps.google.com/maps?q=${latitude},${longitude}&z=15&output=embed`;
@@ -50,7 +65,10 @@ export function getMapEmbedSrc(): string | null {
     return googleMapsUrl;
   }
 
-  return null;
+  const query = extractMapsQuery(googleMapsUrl) ?? address.trim();
+  if (!query) return null;
+
+  return `https://maps.google.com/maps?q=${encodeURIComponent(query)}&z=15&output=embed`;
 }
 
 export function getGoogleMapsLink(): string | null {

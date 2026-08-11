@@ -21,7 +21,7 @@ export function Gallery() {
   const t = useTranslations("Gallery");
 
   return (
-    <section aria-labelledby="gallery-heading" className="bg-surface relative overflow-x-clip">
+    <section aria-labelledby="gallery-heading" className="bg-surface relative overflow-x-clip overflow-y-visible">
       <div
         aria-hidden="true"
         className="from-gold-100/20 via-gold-50/5 pointer-events-none absolute inset-0 bg-gradient-to-b to-transparent"

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { AnimatedSectionHeader } from "@/components/common/animated-section-header";
 import { RichTitleEmphasis } from "@/components/common/rich-title-emphasis";
@@ -29,6 +30,11 @@ export function VisitPearlcrest() {
   const mapEmbedSrc = getMapEmbedSrc();
   const mapsLink = getGoogleMapsLink();
   const whatsappHref = getWhatsAppHref();
+  const [mapMounted, setMapMounted] = useState(false);
+
+  useEffect(() => {
+    setMapMounted(true);
+  }, []);
 
   return (
     <section
@@ -114,7 +120,7 @@ export function VisitPearlcrest() {
                 "relative min-h-[280px] flex-1 overflow-hidden sm:min-h-[360px] lg:min-h-[480px]",
               )}
             >
-              {mapEmbedSrc ? (
+              {mapEmbedSrc && mapMounted ? (
                 <iframe
                   title={t("mapAria")}
                   src={mapEmbedSrc}
@@ -123,7 +129,7 @@ export function VisitPearlcrest() {
                   referrerPolicy="no-referrer-when-downgrade"
                   allowFullScreen
                 />
-              ) : (
+              ) : !mapEmbedSrc ? (
                 <div className="from-gold-50/40 via-background to-gold-100/20 absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br px-8 text-center">
                   <div
                     aria-hidden="true"
@@ -133,7 +139,7 @@ export function VisitPearlcrest() {
                     {t("mapPlaceholder")}
                   </p>
                 </div>
-              )}
+              ) : null}
             </div>
 
             {mapsLink ? (

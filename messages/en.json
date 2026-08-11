@@ -182,8 +182,8 @@
     "mapAria": "Pearlcrest Dental Clinic location map",
     "mapPlaceholder": "Interactive map coming soon.",
     "mapLinkPlaceholder": "Open directions in Google Maps using the link below.",
-    "openMaps": "Open in Google Maps",
-    "openMapsAria": "Open Pearlcrest Dental Clinic in Google Maps"
+    "openMaps": "Get directions",
+    "openMapsAria": "Get directions to Pearlcrest Dental Clinic in Google Maps"
   },
   "BookingModal": {
     "eyebrow": "Consultation",

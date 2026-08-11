@@ -54,7 +54,7 @@ export function HeroHeadline() {
           initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 1.2, ease: easing.luxury, delay: subheadlineDelay }}
-          className="text-body-md text-neutral-200/75 max-w-[23ch] leading-[1.65] tracking-[0.015em] max-md:translate-y-0.5 max-md:font-normal max-md:text-neutral-50/95 max-md:leading-[1.62] max-md:drop-shadow-[0_1px_12px_rgba(0,0,0,0.32)] max-md:rtl:max-w-[calc(100vw-3rem)] rtl:leading-[1.72] rtl:tracking-normal md:max-w-[34ch] md:text-body-lg md:leading-[1.75] md:rtl:max-w-full md:rtl:text-end lg:text-body-xl lg:max-w-[38ch] lg:rtl:max-w-full"
+          className="text-body-md text-neutral-200/75 min-w-0 max-w-[calc(100vw-3rem)] break-words leading-[1.65] tracking-[0.015em] [overflow-wrap:anywhere] max-md:translate-y-0.5 max-md:font-normal max-md:text-neutral-50/95 max-md:leading-[1.62] max-md:drop-shadow-[0_1px_12px_rgba(0,0,0,0.32)] rtl:leading-[1.72] rtl:tracking-normal md:max-w-[34ch] md:text-body-lg md:leading-[1.75] md:rtl:max-w-full md:rtl:text-end lg:text-body-xl lg:max-w-[38ch] lg:rtl:max-w-full"
         >
           {t("subheadline")}
         </motion.p>

@@ -61,20 +61,17 @@ export function CustomCursor() {
   if (reduceMotion || isTouch) return null;
 
   return (
-    <>
-      <style>{`*, *::before, *::after { cursor: none !important; }`}</style>
-      <motion.div
-        aria-hidden="true"
-        className="pointer-events-none fixed start-0 top-0 z-[9999] mix-blend-difference"
-        style={{ x: springX, y: springY, opacity: visible ? 1 : 0 }}
-      >
+    <motion.div
+      aria-hidden="true"
+      className="pointer-events-none fixed start-0 top-0 z-[9999] mix-blend-difference"
+      style={{ x: springX, y: springY, opacity: visible ? 1 : 0 }}
+    >
         <motion.div
           animate={{ scale: hovering ? 2.4 : 1, opacity: hovering ? 0.85 : 0.65 }}
           transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
           className="absolute -start-[16px] -top-[16px] size-8 rounded-full border border-white bg-transparent"
         />
         <div className="absolute -start-[4px] -top-[4px] size-2 rounded-full bg-white shadow-[0_0_16px_rgba(255,255,255,0.6)]" />
-      </motion.div>
-    </>
+    </motion.div>
   );
 }

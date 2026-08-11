@@ -54,7 +54,7 @@ export function Hero() {
 
       <motion.div
         style={contentDissolve.style}
-        className="px-gutter lg:px-gutter-lg pointer-events-none relative z-10 mx-auto flex w-full max-w-[1600px] flex-1 flex-col justify-end overflow-hidden pb-4 pt-24 md:px-10 md:pb-32 md:pt-36 lg:pb-40"
+        className="px-gutter lg:px-gutter-lg pointer-events-none relative z-10 mx-auto flex w-full max-w-[1600px] flex-1 flex-col justify-end overflow-x-clip pb-4 pt-24 md:px-10 md:pb-32 md:pt-36 lg:pb-40"
       >
         <div className="pointer-events-auto flex w-full min-w-0 max-w-full flex-col items-stretch gap-8 max-md:rtl:text-start md:max-w-4xl md:items-start md:gap-16 md:rtl:me-[8vw] md:rtl:ms-auto md:rtl:w-[min(620px,45vw)] md:rtl:max-w-[min(620px,45vw)] md:rtl:items-end md:rtl:text-end lg:gap-[4.75rem]">
           <HeroHeadline />

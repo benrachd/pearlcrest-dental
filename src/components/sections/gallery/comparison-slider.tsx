@@ -18,8 +18,8 @@ import { cn } from "@/utils/cn";
 const IMAGE_POSITION = "object-cover object-center";
 
 const RELEASE_SPRING = { stiffness: 280, damping: 32, mass: 0.8 };
-/** Keeps the 3.5rem handle rail fully inside the image at every viewport width. */
-const SLIDER_EDGE_INSET = "1.75rem";
+/** Keeps the handle fully inside the image at every viewport width (half of w-14 + scale buffer). */
+const SLIDER_EDGE_INSET = "2rem";
 const SLIDER_MIN = 7;
 const SLIDER_MAX = 93;
 
@@ -187,7 +187,7 @@ export function ComparisonSlider({
   ];
 
   return (
-    <article className="box-border flex w-full min-w-0 max-w-full flex-col gap-8 overflow-hidden sm:gap-10 lg:gap-12">
+    <article className="box-border flex w-full min-w-0 max-w-full flex-col gap-8 sm:gap-10 lg:gap-12">
       <h3 className="font-body box-border min-w-0 max-w-full break-words px-0 text-heading-xl tracking-tight text-neutral-950 sm:text-display-sm rtl:text-start [overflow-wrap:anywhere]">
         {title}
       </h3>
@@ -292,19 +292,19 @@ export function ComparisonSlider({
         {isReady && (
           <motion.div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-y-0 z-10 flex w-14 -translate-x-1/2 items-center justify-center will-change-[left]"
+            className="pointer-events-none absolute inset-y-0 z-10 w-0 -translate-x-1/2"
             style={{ left: handleLeft }}
           >
             <span
               aria-hidden="true"
-              className="absolute inset-y-0 w-px bg-neutral-50/95 shadow-[0_0_8px_rgba(255,255,255,0.9),0_0_20px_rgba(198,169,98,0.45)]"
+              className="absolute inset-y-0 start-1/2 w-px -translate-x-1/2 bg-neutral-50/95 shadow-[0_0_8px_rgba(255,255,255,0.9),0_0_20px_rgba(198,169,98,0.45)]"
             />
 
             <span
               aria-hidden="true"
               className={cn(
-                "glass-strong border-neutral-50/25 text-gold-700 ease-luxury flex size-12 items-center justify-center gap-0.5 rounded-full border shadow-[0_8px_32px_rgba(20,20,20,0.12),0_0_24px_rgba(198,169,98,0.18)] backdrop-blur-[24px] transition-[transform,box-shadow] duration-300",
-                handleActive && "scale-[1.12] shadow-[0_12px_40px_rgba(20,20,20,0.16),0_0_32px_rgba(198,169,98,0.28)]",
+                "glass-strong border-neutral-50/25 text-gold-700 ease-luxury absolute start-1/2 top-1/2 flex size-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-0.5 rounded-full border shadow-[0_8px_32px_rgba(20,20,20,0.12),0_0_24px_rgba(198,169,98,0.18)] backdrop-blur-[24px] transition-[transform,box-shadow] duration-300",
+                handleActive && "scale-[1.08] shadow-[0_12px_40px_rgba(20,20,20,0.16),0_0_32px_rgba(198,169,98,0.28)]",
               )}
             >
               <ChevronLeftIcon />

@@ -182,8 +182,8 @@
     "mapAria": "خريطة موقع عيادة بيرلكريست",
     "mapPlaceholder": "خريطة تفاعلية قريبًا.",
     "mapLinkPlaceholder": "افتح الاتجاهات في Google Maps عبر الرابط أدناه.",
-    "openMaps": "فتح في Google Maps",
-    "openMapsAria": "فتح عيادة بيرلكريست في Google Maps"
+    "openMaps": "احصل على الاتجاهات",
+    "openMapsAria": "احصل على الاتجاهات إلى عيادة بيرلكريست في Google Maps"
   },
   "BookingModal": {
     "eyebrow": "استشارة",

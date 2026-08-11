@@ -3,7 +3,7 @@
  * to override what makes them different (title, description, image).
  */
 export const seoDefaults = {
-  ogImage: "/images/og/default.jpg",
+  ogImage: "/images/hero/hero-editorial-v2.png",
   ogImageWidth: 1200,
   ogImageHeight: 630,
   twitterCard: "summary_large_image" as const,
